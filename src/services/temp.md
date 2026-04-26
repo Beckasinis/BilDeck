@@ -1,0 +1,1 @@
+hit ska Supabase anrop
