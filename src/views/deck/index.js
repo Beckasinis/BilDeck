@@ -1,4 +1,4 @@
-export { default } from './cards.jsx';
+export { default } from './Deck.jsx';
 
 // Re-export everything from this folder here.
 // This allows importing from 'views/cards' instead of 'views/cards/cards.jsx'

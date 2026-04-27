@@ -1,4 +1,6 @@
-function CardsView(){
+import './deck.css'
+
+function DeckView(){
     return(
         <>
         <h1>FLASHCARDS</h1>
@@ -7,4 +9,4 @@ function CardsView(){
     );
 }
 
-export default CardsView;
+export default DeckView;
