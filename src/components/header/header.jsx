@@ -4,14 +4,16 @@ import LoginModal from '../loginModal'
 
 function Header() {
   return (
-    <>
-      <h1>Header</h1>
-      <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/deck">Flashcards</Link></li>
-      </ul>
-      <LoginModal />
-    </>
+    <header>
+      <h1>BilDeck</h1>
+      <nav>
+        <ul>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/deck">Flashcards</Link></li>
+        </ul>
+        <LoginModal />
+      </nav>
+    </header>
   );
 }
 
