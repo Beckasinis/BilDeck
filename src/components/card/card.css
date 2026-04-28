@@ -3,18 +3,29 @@
   isolation: isolate;
   width: min(100cqw, calc(100cqh * 5/7));
   aspect-ratio: 5/7;
+}
+
+.card-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease;
   border: 1px solid #000;
   border-radius: 12px;
   background: #fff;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 
-  .card-txt {
-    height: 100%;
+  .question-side,
+  .answer-side {
+    position: absolute;
+    inset: 0;
     display: flex;
     flex-direction: column;
     padding: 0.5rem;
     gap: 0.5rem;
     align-items: center;
+    backface-visibility: hidden;
 
     .card-label {
       width: 100%;
@@ -39,17 +50,28 @@
       width: 100%;
     }
   }
+
+  .answer-side {
+    transform: rotateY(180deg);
+  }
+}
+
+.card-content.flipped {
+  transform: rotateY(180deg);
 }
 
 @media (orientation: landscape) {
   .card {
     width: min(100cqw, calc(100cqh * 7/5));
     aspect-ratio: 7/5;
-
-  .card-txt{
-      i {
-      display: none;
-      }
   }
+
+  .card-content {
+    .question-side,
+    .answer-side {
+      i {
+        display: none;
+      }
+    }
   }
 }
