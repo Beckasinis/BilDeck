@@ -10,9 +10,13 @@
 }
 
 :root {
-  --max-width: 480px;
+  --max-width: 430px;
   --spacing: 1rem;
   --spacing-lg: 1.5rem;
+
+  @media (orientation: landscape) {
+  --max-width: 932px;
+}
 }
 
 body {
@@ -34,6 +38,8 @@ main {
   max-width: var(--max-width);
   margin: 0 auto;
   padding: var(--spacing-lg) var(--spacing);
+  display: flex;           
+  flex-direction: column;  
 }
 
 /* Views */
@@ -45,14 +51,7 @@ main {
   gap: var(--spacing-lg);
   text-align: center;
   min-height: 60vh;
-}
-
-.deck-view {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--spacing-lg);
-}
+} 
 
 .signup-view {
   display: flex;

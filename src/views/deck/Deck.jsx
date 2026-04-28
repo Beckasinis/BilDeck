@@ -1,12 +1,18 @@
-import './deck.css'
+import './deck.css';
+import Card from '../../components/card';
 
-function DeckView() {
+export default function DeckView() {
   return (
-    <div className="deck-view">
-      <h1>FLASHCARDS</h1>
-      <p>Här kommer BilDeck spelet</p>
-    </div>
+    <section className="deck-view">
+      <div className="deck-done">Done 10</div>
+      <div className="deck-active">Active 10</div>
+      <div className="card-container">
+        <Card 
+          label="FRÅGA" 
+          icon="?" 
+          text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi eaque impedit repudiandae voluptates dolorum tenetur aut labore adipisci quisquam nostrum? Fugiat nihil mollitia quod pariaturis odio optio?" 
+        />
+      </div>
+    </section>
   );
 }
-
-export default DeckView;
