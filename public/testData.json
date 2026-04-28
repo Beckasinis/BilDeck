@@ -1,0 +1,18 @@
+{
+  "categories": [
+    {
+        "id": 1,
+        "name": "test",
+        "icon": "🧭"
+    }
+  ],
+  
+    "cards": [
+    {
+      "id": 10,
+      "question": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi eaque impedit repudiandae voluptates dolorum tenetur aut labore adipisci quisquam nostrum? Fugiat nihil mollitia quod pariaturis odio optio!",
+      "answer": "This is the answer to the question above.",
+      "categoryId": 1
+    }
+  ]
+}
