@@ -1,15 +1,20 @@
 import './header.css';
-import Hamburger from './Hamburger'
+import { Link } from 'react-router'
 import LoginModal from '../loginModal'
 
-function Header(){
-    return (
-        <>
-        <h1>Header</h1>
-        <Hamburger />
+function Header() {
+  return (
+    <header>
+      <h1>BilDeck</h1>
+      <nav>
+        <ul>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/deck">Flashcards</Link></li>
+        </ul>
         <LoginModal />
-        </>
-    );
+      </nav>
+    </header>
+  );
 }
 
 export default Header;

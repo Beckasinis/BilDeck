@@ -1,30 +1,74 @@
-:root {
- 
+/* =============================
+   1. Root & reset
+   ============================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    
-  }
-
+:root {
+  --max-width: 480px;
+  --spacing: 1rem;
+  --spacing-lg: 1.5rem;
 }
 
 body {
-  margin: 0;
+  font-family: system-ui, sans-serif;
+  min-height: 100dvh;
 }
 
-
-h1,
-h2 {
-  
+/* Global layout */
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
 }
 
-h1 {
- 
+/* Main */
+main {
+  flex: 1;
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--spacing-lg) var(--spacing);
 }
-h2 {
-  
+
+/* Views */
+.home-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-lg);
+  text-align: center;
+  min-height: 60vh;
 }
-p {
-  margin: 0;
+
+.deck-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-lg);
+}
+
+.signup-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+}
+
+/* 404 Not Found */
+.notfound-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-lg);
+  text-align: center;
+  min-height: 60vh;
 }
