@@ -14,9 +14,30 @@ function LoginModal({ onClose }) {
         <button className="modal-close" onClick={onClose}>×</button>
 
         <h1>Login</h1>
-        <p>Här kommer inloggningen</p>
 
-        <p>Inget konto? <Link to="/signup" onClick={onClose}>Registrera dig</Link></p>
+        <form>
+          <div className="form-group">
+            <label htmlFor="username">Användarnamn</label>
+            <input
+              type="text"
+              id="username"
+              placeholder="Ditt användarnamn"
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="password">Lösenord</label>
+            <input
+              type="password"
+              id="password"
+              placeholder="Ditt lösenord"
+            />
+          </div>
+
+          <button type="submit" className="submit-button">Logga in</button>
+        </form>
+
+        <p className="signup-link">Inget konto? <Link to="/signup" onClick={onClose}>Registrera dig</Link></p>
       </div>
     </div>
   );

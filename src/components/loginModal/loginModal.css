@@ -77,3 +77,59 @@
     font-size: 1.25rem;
   }
 }
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #111;
+}
+
+.form-group input {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  color: #111;
+  background: #fff;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #999;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+.submit-button {
+  padding: 0.75rem 1rem;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  color: #111;
+  transition: all 0.2s ease;
+}
+
+.submit-button:hover {
+  background: #f5f5f5;
+  border-color: #999;
+}
+
+.signup-link {
+  text-align: center;
+  margin-top: 1rem;
+}
