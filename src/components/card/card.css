@@ -3,6 +3,11 @@
   isolation: isolate;
   width: min(100cqw, calc(100cqh * 5/7));
   aspect-ratio: 5/7;
+
+  @media (orientation: landscape) {
+    width: min(100cqw, calc(100cqh * 7/5));
+    aspect-ratio: 7/5;
+  }
 }
 
 .card-content {
@@ -15,6 +20,10 @@
   border-radius: 12px;
   background: #fff;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+
+  &.flipped {
+    transform: rotateY(180deg);
+  }
 
   .question-side,
   .answer-side {
@@ -36,6 +45,10 @@
     i {
       font-size: 3rem;
       flex-shrink: 0;
+
+      @media (orientation: landscape) {
+        display: none;
+      }
     }
 
     p {
@@ -53,25 +66,5 @@
 
   .answer-side {
     transform: rotateY(180deg);
-  }
-}
-
-.card-content.flipped {
-  transform: rotateY(180deg);
-}
-
-@media (orientation: landscape) {
-  .card {
-    width: min(100cqw, calc(100cqh * 7/5));
-    aspect-ratio: 7/5;
-  }
-
-  .card-content {
-    .question-side,
-    .answer-side {
-      i {
-        display: none;
-      }
-    }
   }
 }
