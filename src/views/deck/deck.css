@@ -1,0 +1,40 @@
+.deck-view {
+  flex: 1;
+  width: 100%; 
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr; 
+  grid-template-areas:
+    "done active"
+    "card-container card-container";  
+  gap: 1rem;
+}
+
+@media (orientation: landscape) {
+  .deck-view {
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: 1fr;
+    grid-template-areas: "done card-container active";
+  }
+}
+
+.deck-done { 
+    grid-area: done; 
+}
+
+.deck-active    { 
+    grid-area: active; 
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  }
+
+.card-container { 
+  grid-area: card-container;
+  min-height: 0;
+  container-type: size;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
