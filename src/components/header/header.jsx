@@ -24,7 +24,14 @@ function Header() {
   return (
     <header>
       <div className="logo">
-        <h1>BilDeck</h1>
+        <img src="/img/apple-touch-icon.png" alt="logo BilDeck" />
+        <div>
+          <h1>
+            <span className="logo-part1">Bil</span>
+            <span className="logo-part2">Deck</span>
+          </h1>
+          <p className="logo-part3">TRIMMA TEORIN</p>
+        </div>
       </div>
 
       <nav>
