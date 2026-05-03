@@ -1,7 +1,7 @@
 import { useRef, useEffect, useState } from 'react';
 import './card.css';
 
-function Card({ question, answer, icon }) {
+function Card({ question, answer, icon, color }) {
   const [isFlipped, setIsFlipped] = useState(false);
 
   const questionRef = useRef(null);
@@ -16,13 +16,13 @@ function Card({ question, answer, icon }) {
         className={`card-content ${isFlipped ? 'flipped' : ''}`}
         onClick={() => setIsFlipped(f => !f)}
       >
-        <section className="question-side">
+        <section className="question-side" style={{ backgroundColor: color }}>
           <span className="card-label">FRÅGA</span>
           <i>{icon}</i>
           <p ref={questionRef}>{question}</p>
         </section>
 
-        <section className="answer-side">
+        <section className="answer-side" style={{ backgroundColor: color }}>
           <span className="card-label">SVAR</span>
           <i>{icon}</i>
           <p ref={answerRef}>{answer}</p>

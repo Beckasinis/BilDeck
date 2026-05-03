@@ -27,8 +27,8 @@ function Header() {
         <img src="/img/apple-touch-icon.png" alt="logo BilDeck" />
         <div>
           <h1>
-            <span className="logo-part1">Bil</span>
-            <span className="logo-part2">Deck</span>
+            <span className="logo-part1">BIL</span>
+            <span className="logo-part2">DECK</span>
           </h1>
           <p className="logo-part3">TRIMMA TEORIN</p>
         </div>

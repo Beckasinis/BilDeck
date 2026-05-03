@@ -1,32 +1,34 @@
 import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router';
 import './deck.css';
 import Card from '../../components/card';
+import { getCards, getCategories } from '../../services/deckService';
 
 export default function DeckView() {
   const [cards, setCards] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [searchParams] = useSearchParams();
+  const selectedCategoryId = searchParams.get('subject');
 
-  //Simulates API call
-  useEffect(() => {
-  fetch('/testData.json')
-    .then(res => res.json())
-    .then(data => {
-      setCards(data.cards);
-      setCategories(data.categories);
-    });
+ useEffect(() => {
+  async function fetchData() {
+    const [cards, categories] = await Promise.all([
+      getCards(),
+      getCategories()
+    ]);
+    console.log('cards:', cards);
+    console.log('categories:', categories);
+    setCards(cards);
+    setCategories(categories);
+  }
+  fetchData();
 }, []);
 
-/*
-  When connecting Supabase replace .then with:
-  const { data, error } = await supabase
-    .from('cards')
-    .select('*, categories(*)');
-  */
+  const categoryCards = cards.filter(c => c.category_id === selectedCategoryId);
+  const currentCard = categoryCards[0];
+  const currentCategory = categories.find(c => c.id === currentCard?.category_id);
 
-  const currentCard = cards[0];
-  const currentCategory = categories.find(c => c.id === currentCard?.categoryId);
-
-  if (!currentCard) return null;
+  if (!currentCard) return <p>No card found</p>;
 
   return (
     <section className="deck-view">
@@ -37,6 +39,7 @@ export default function DeckView() {
           question={currentCard.question}
           answer={currentCard.answer}
           icon={currentCategory?.icon}
+          color={currentCategory?.color_light}
         />
       </div>
     </section>
