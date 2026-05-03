@@ -20,7 +20,6 @@
   border-radius: 12px;
   background: #fff;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-  overflow: hidden;
 
   &.flipped {
     transform: rotateY(180deg);
@@ -37,6 +36,7 @@
     align-items: center;
     backface-visibility: hidden;
     overflow: hidden;
+    border-radius: 12px;
 
     .card-label {
       width: 100%;
