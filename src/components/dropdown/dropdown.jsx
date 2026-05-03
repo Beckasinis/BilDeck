@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
+import { getCategories } from '../../services/deckService';
 import './dropdown.css';
 
 /**
@@ -10,12 +11,20 @@ function Dropdown() {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
 
-  // Category data
-  const categories = [
-    { id: 1, name: 'Subject 1' },
-    { id: 2, name: 'Subject 2' },
-    { id: 3, name: 'Subject 3' },
-  ];
+  // Category data fetched from Supabase
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    async function fetchCategories() {
+      try {
+        const data = await getCategories();
+        setCategories(data);
+      } catch (error) {
+        console.error('Failed to fetch categories:', error);
+      }
+    }
+    fetchCategories();
+  }, []);
 
   /**
    * Toggles the dropdown open/closed state

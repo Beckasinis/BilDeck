@@ -35,6 +35,8 @@
     gap: 0.5rem;
     align-items: center;
     backface-visibility: hidden;
+    overflow: hidden;
+    border-radius: 12px;
 
     .card-label {
       width: 100%;
