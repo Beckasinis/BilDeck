@@ -131,11 +131,43 @@ export default function DeckView() {
   // No cards loaded - bad connection or empty category
   if (!cards.length) return <p>No cards available</p>;
 
-  // TODO: replace with completion screen in sub-issue 5
+  // Deck completion screen
+  // TODO: consider breaking out into its own component if it grows
+  // TODO: add offline category caching to Zustand so categories are available without network
   if (!currentCard) return (
-    <div>
-      <p>All cards completed!</p>
-      <button onClick={() => resetDeck(selectedCategoryId)}>Reset deck</button>
+    <div className="completion-screen">
+      <div className="confetti-container">
+        {[...Array(20)].map((_, i) => (
+          <div key={i} className={`confetti-piece confetti-${i % 5}`} style={{
+            left: `${Math.random() * 100}%`,
+            animationDelay: `${Math.random() * 0.5}s`,
+            animationDuration: `${0.8 + Math.random() * 0.6}s`
+          }} />
+        ))}
+      </div>
+      <h1 className="completion-title">Bra jobbat!</h1>
+      <p className="completion-subtitle">Du har gått igenom alla kort!</p>
+      <div className="completion-actions">
+        <button 
+          className="completion-button primary"
+          onClick={() => resetDeck(selectedCategoryId)}
+        >
+          🔄 Starta Om
+        </button>
+        <div className="completion-categories">
+          <p>Välj en annan kategori:</p>
+          {/* TODO: replace with cached categories from Zustand for offline support */}
+          {categories.map(cat => (
+            <a 
+              key={cat.id} 
+              href={`/deck?subject=${cat.id}`}
+              className="completion-category-link"
+            >
+              {cat.icon} {cat.name}
+            </a>
+          ))}
+        </div>
+      </div>
     </div>
   );
 
