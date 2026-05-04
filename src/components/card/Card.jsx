@@ -1,7 +1,7 @@
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState, forwardRef, useImperativeHandle } from 'react';
 import './card.css';
 
-function Card({ question, answer, icon, color }) {
+const Card = forwardRef(function Card({ question, answer, icon, color, onFlip }, ref) {
   const [isFlipped, setIsFlipped] = useState(false);
 
   const questionRef = useRef(null);
@@ -9,6 +9,13 @@ function Card({ question, answer, icon, color }) {
 
   useFitText(questionRef, question);
   useFitText(answerRef, answer);
+
+  // Exposes flip function to parent via ref
+  useImperativeHandle(ref, () => ({
+    flip() {
+      setIsFlipped(f => !f);
+    }
+  }));
 
   return (
     <article className="card">
@@ -30,7 +37,7 @@ function Card({ question, answer, icon, color }) {
       </div>
     </article>
   );
-}
+});
 
 function useFitText(ref, text) {
   useEffect(() => {
