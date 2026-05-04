@@ -129,13 +129,38 @@ export default function DeckView() {
     </div>
   );
 
-  return (
+return (
     <section className="deck-view">
-      {/* TODO: replace with deck visuals and counters in sub-issue 3 */}
-      {/* TODO: add reset button to trigger resetDeck (see useDeckStore) */}
-      <div className="deck-done">Done {doneIds.length}</div>
-      {/* TODO: replace with deck visuals and counters in sub-issue 3 */}
-      <div className="deck-active">Active {activeIds.length}</div>
+      <div className="deck-done">
+        <img 
+          src="/img/deck-left.png" 
+          alt="Klar kort hög"
+          className={`deck-img ${doneIds.length > 0 ? 'active' : 'inactive'}`}
+        />
+        <div className="deck-info">
+          <span>Klar: {doneIds.length}</span>
+          {doneIds.length > 0 && (
+            <button 
+              className="reset-button"
+              onClick={() => resetDeck(selectedCategoryId)}
+            >
+              🔄 Starta Om
+            </button>
+          )}
+        </div>
+      </div>
+
+      <div className="deck-active">
+        <div className="deck-info">
+          <span>Aktiv: {activeIds.length}</span>
+        </div>
+        <img 
+          src="/img/deck-right.png" 
+          alt="Aktiv kort hög"
+          className="deck-img active"
+        />
+      </div>
+
       <div className="card-container">
         <Card
           ref={cardRef}
