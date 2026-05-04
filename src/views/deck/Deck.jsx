@@ -11,6 +11,8 @@ export default function DeckView() {
   const [searchParams] = useSearchParams();
   const selectedCategoryId = searchParams.get('subject');
   const cardRef = useRef(null);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [lastReceived, setLastReceived] = useState(null); // 'done' or 'active'
 
   const { setCards: setStoreCards, moveCard, getActive, getDone, resetDeck } = useDeckStore();
 
@@ -29,18 +31,26 @@ export default function DeckView() {
 
   // Handles card navigation and flip direction signals
   // Reads fresh from Zustand store to avoid stale closure issues
+  // Triggers deck pulse and card fade-in transition on navigation
   function handleNext(direction) {
-    if (direction === 'flip') {
-      cardRef.current?.flip();
-      return;
-    }
-    const freshActiveIds = getActive(categoryIdRef.current);
-    const currentCard = freshActiveIds
-      .map(id => cardsRef.current.find(c => c.id === id))
-      .filter(Boolean)[0];
-    if (!currentCard) return;
-    moveCard(currentCard.id, direction, categoryIdRef.current);
+  if (direction === 'flip') {
+    cardRef.current?.flip();
+    return;
   }
+  const freshActiveIds = getActive(categoryIdRef.current);
+  const currentCard = freshActiveIds
+    .map(id => cardsRef.current.find(c => c.id === id))
+    .filter(Boolean)[0];
+  if (!currentCard) return;
+
+  moveCard(currentCard.id, direction, categoryIdRef.current);
+  setLastReceived(direction);
+  setIsTransitioning(true);
+  setTimeout(() => {
+    setIsTransitioning(false);
+    setLastReceived(null);
+  }, 350);
+}
 
   // Keyboard navigation - listens globally on window
   // Cleaned up on unmount to avoid memory leaks
@@ -129,21 +139,49 @@ export default function DeckView() {
     </div>
   );
 
-  return (
+return (
     <section className="deck-view">
-      {/* TODO: replace with deck visuals and counters in sub-issue 3 */}
-      {/* TODO: add reset button to trigger resetDeck (see useDeckStore) */}
-      <div className="deck-done">Done {doneIds.length}</div>
-      {/* TODO: replace with deck visuals and counters in sub-issue 3 */}
-      <div className="deck-active">Active {activeIds.length}</div>
-      <div className="card-container">
-        <Card
-          ref={cardRef}
-          question={currentCard.question}
-          answer={currentCard.answer}
-          icon={currentCategory?.icon}
-          color={currentCategory?.color_light}
+      <div className="deck-done">
+       <img 
+          src="/img/deck-left.png" 
+          alt="Klar kort hög"
+          className={`deck-img ${doneIds.length > 0 ? 'active' : 'inactive'} ${lastReceived === 'done' ? 'receiving' : ''}`}
         />
+        <div className="deck-info">
+          <span>Klar: {doneIds.length}</span>
+          {doneIds.length > 0 && (
+            <button 
+              className="reset-button"
+              onClick={() => resetDeck(selectedCategoryId)}
+            >
+              🔄 Starta Om
+            </button>
+          )}
+        </div>
+      </div>
+
+      <div className="deck-active">
+        <div className="deck-info">
+          <span>Aktiv: {activeIds.length}</span>
+        </div>
+       <img 
+          src="/img/deck-right.png" 
+          alt="Aktiv kort hög"
+          className={`deck-img active ${lastReceived === 'active' ? 'receiving' : ''}`}
+        />
+      </div>
+
+      <div className="card-container">
+        {!isTransitioning && (
+          <Card
+            ref={cardRef}
+            question={currentCard.question}
+            answer={currentCard.answer}
+            icon={currentCategory?.icon}
+            color={currentCategory?.color_light}
+            className="card-fade-in"
+          />
+          )}
       </div>
     </section>
   );
