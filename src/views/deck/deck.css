@@ -1,6 +1,8 @@
 .deck-view {
   flex: 1;
-  width: 100%; 
+  width: 100%;
+  max-width: 430px;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto 1fr; 
@@ -12,6 +14,7 @@
 
 @media (orientation: landscape) {
   .deck-view {
+    max-width: 932px;
     grid-template-columns: auto 1fr auto;
     grid-template-rows: 1fr;
     grid-template-areas: "done card-container active";
