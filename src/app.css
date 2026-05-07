@@ -1,7 +1,52 @@
-/* :root = html-elementet */
+@font-face {
+  font-family: 'Outfit';
+  src: url('/fonts/Outfit-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Outfit';
+  src: url('/fonts/Outfit-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Barlow';
+  src: url('/fonts/Barlow-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Barlow';
+  src: url('/fonts/Barlow-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* :root = html-element */
 :root {
   --spacing: 1rem;
   --spacing-lg: 1.5rem;
+
+  /* Colors - light mode */
+  --bg: #F7F9FC;
+  --text: #1A1E24;
+  --accent: #2278D4;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #12151A;
+    --text: #E6EAF0;
+    --accent: #2278D4;
+  }
 }
 
 *,
@@ -13,12 +58,18 @@
 }
 
 body {
-  font-family: system-ui, sans-serif;
   min-height: 100dvh;
-  min-width: 100dvh;
+  min-width: 100vw;
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 26px;
+  letter-spacing: 0.01em;;
+  background-color: var(--bg);
+  color: var(--text);
 }
 
-/*  #root = React-diven */
+/* #root = React-div */
 #root {
   display: flex;
   flex-direction: column;
@@ -31,4 +82,20 @@ main {
   padding: var(--spacing-lg) var(--spacing);
   display: flex;
   flex-direction: column;
+}
+
+h2 {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 50px;
+  letter-spacing: 0.01em;
+}
+
+h3 {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 30px;
+  letter-spacing: 0.01em;
 }
