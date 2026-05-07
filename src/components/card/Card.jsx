@@ -44,11 +44,13 @@ function useFitText(ref, text) {
     const p = ref.current;
     if (!p) return;
 
-    p.style.fontSize = '';
-    const style = window.getComputedStyle(p);
-    let size = parseFloat(style.fontSize);
+   let size = 48;
+    p.style.fontSize = `${size}px`;
 
-    while (p.scrollHeight > p.clientHeight && size > 10) {
+    while (
+      (p.scrollHeight > p.clientHeight || p.scrollWidth > p.clientWidth)
+      && size > 10
+    ) {
       size -= 0.5;
       p.style.fontSize = `${size}px`;
     }
