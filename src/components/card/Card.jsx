@@ -1,8 +1,12 @@
 import { useRef, useEffect, useState, forwardRef, useImperativeHandle } from 'react';
 import './card.css';
 
-const Card = forwardRef(function Card({ question, answer, icon, color, onFlip }, ref) {
+const Card = forwardRef(function Card({ question, answer, icon, colorLight, colorDark, onFlip }, ref) {
   const [isFlipped, setIsFlipped] = useState(false);
+
+  // Detect dark mode
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const color = prefersDark ? colorDark : colorLight;
 
   const questionRef = useRef(null);
   const answerRef = useRef(null);
@@ -44,7 +48,7 @@ function useFitText(ref, text) {
     const p = ref.current;
     if (!p) return;
 
-   let size = 48;
+    let size = 48;
     p.style.fontSize = `${size}px`;
 
     while (
