@@ -210,7 +210,8 @@ return (
             question={currentCard.question}
             answer={currentCard.answer}
             icon={currentCategory?.icon}
-            color={currentCategory?.color_light}
+            colorLight={currentCategory?.color_light}
+            colorDark={currentCategory?.color_dark}
             className="card-fade-in"
           />
           )}
