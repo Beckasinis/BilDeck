@@ -1,3 +1,5 @@
+import './notfound.css';
+
 function NotFoundView() {
   return (
     <div className="notfound-view">
