@@ -212,6 +212,7 @@ return (
             icon={currentCategory?.icon}
             colorLight={currentCategory?.color_light}
             colorDark={currentCategory?.color_dark}
+            displayType={currentCategory?.display_type}
             className="card-fade-in"
           />
           )}
