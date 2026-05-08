@@ -92,6 +92,10 @@ function SignUpView() {
         body: JSON.stringify({
           email: formData.email,
           password: formData.password,
+          data: {
+            first_name: formData.firstName,
+            last_name: formData.lastName,
+          }
         })
       })
 

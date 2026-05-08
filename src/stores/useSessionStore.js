@@ -1,3 +1,5 @@
+import { create } from 'zustand'
+import { persist } from 'zustand/middleware'
 
 const useSessionStore = create(
   persist((set) => ({
@@ -7,3 +9,5 @@ const useSessionStore = create(
     logout: () => set({ user: null, session: null }),
   }), { name: 'session' })
 );
+
+export default useSessionStore
