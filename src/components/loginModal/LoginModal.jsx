@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link } from 'react-router'
+import { Link, useNavigate } from 'react-router'
 import './loginModal.css'
 import useSessionStore from '../../stores/useSessionStore'
 
@@ -23,6 +23,8 @@ function LoginModal({ onClose }) {
 
   // Holds loading state during API call
   const [loading, setLoading] = useState(false)
+
+  const navigate = useNavigate()
 
   // Single handler for all inputs — uses the input's name attribute to update the correct key in formData
   function handleChange(e) {
@@ -77,6 +79,7 @@ function LoginModal({ onClose }) {
 
       setUser(data.user)
       onClose()
+      navigate('/')
 
     } catch (err) {
       setError(err.message)

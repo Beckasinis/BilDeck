@@ -2,6 +2,7 @@ import { useState } from 'react'
 import useModalStore from '../../stores/useModalStore'
 import { useNavigate } from 'react-router'
 import './signup.css'
+import useSessionStore from '../../stores/useSessionStore'
 
 function SignUpView() {
   const navigate = useNavigate()
@@ -23,6 +24,10 @@ function SignUpView() {
 
   //Open login modal from global store
   const openLoginModal = useModalStore((s) => s.openLoginModal)
+
+  const [success, setSuccess] = useState(false)
+
+  const logout = useSessionStore((s) => s.logout)
 
   // Single handler for all inputs — uses the input's name attribute to update the correct key in formData
   function handleChange(e) {
@@ -105,7 +110,8 @@ function SignUpView() {
         throw new Error(data.msg || data.error_description || 'Något gick fel.')
       }
 
-      navigate('/')
+      logout()
+      setSuccess(true)
 
     } catch (err) {
       setError(err.message)
@@ -120,70 +126,78 @@ function SignUpView() {
         <h1>Sign Up</h1>
 
         {error && <p className="error-message">{error}</p>}
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label>Förnamn</label>
-            <input
-              type="text"
-              name="firstName"
-              maxLength={50}
-              value={formData.firstName}
-              onChange={handleChange}
-              placeholder="Förnamn"
-            />
-          </div>
 
-          <div className="form-group">
-            <label>Efternamn</label>
-            <input
-              type="text"
-              name="lastName"
-              maxLength={50}
-              value={formData.lastName}
-              onChange={handleChange}
-              placeholder="Efternamn"
-            />
+        {success ? (
+          <div className="success-message">
+            <p>Konto skapat! Vi har skickat en verifieringslänk till <strong>{formData.email}</strong>. Verifiera din e-post och logga sedan in.</p>
+            <button className="submit-button" onClick={openLoginModal}>Logga in</button>
           </div>
-          <div className="form-group">
-            <label>E-mail</label>
-            <input
-              type="email"
-              name="email"
-              maxLength={100}
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="E-post"
-            />
-          </div>
+        ) : (
+          <form onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label>Förnamn</label>
+              <input
+                type="text"
+                name="firstName"
+                maxLength={50}
+                value={formData.firstName}
+                onChange={handleChange}
+                placeholder="Förnamn"
+              />
+            </div>
 
-          <div className="form-group">
-            <label>Lösenord</label>
-            <input
-              type="password"
-              name="password"
-              maxLength={72}
-              value={formData.password}
-              onChange={handleChange}
-              placeholder="Lösenord"
-            />
-          </div>
+            <div className="form-group">
+              <label>Efternamn</label>
+              <input
+                type="text"
+                name="lastName"
+                maxLength={50}
+                value={formData.lastName}
+                onChange={handleChange}
+                placeholder="Efternamn"
+              />
+            </div>
+            <div className="form-group">
+              <label>E-mail</label>
+              <input
+                type="email"
+                name="email"
+                maxLength={100}
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="E-post"
+              />
+            </div>
 
-          <div className="form-group">
-            <label>Bekräfta lösenord</label>
-            <input
-              type="password"
-              name="confirmPassword"
-              maxLength={72}
-              value={formData.confirmPassword}
-              onChange={handleChange}
-              placeholder="Bekräfta lösenord"
-            />
-          </div>
+            <div className="form-group">
+              <label>Lösenord</label>
+              <input
+                type="password"
+                name="password"
+                maxLength={72}
+                value={formData.password}
+                onChange={handleChange}
+                placeholder="Lösenord"
+              />
+            </div>
 
-          <button className="submit-button" type="submit" disabled={loading}>
-            {loading ? 'Skapar konto...' : 'Registrera konto'}
-          </button>
-        </form>
+            <div className="form-group">
+              <label>Bekräfta lösenord</label>
+              <input
+                type="password"
+                name="confirmPassword"
+                maxLength={72}
+                value={formData.confirmPassword}
+                onChange={handleChange}
+                placeholder="Bekräfta lösenord"
+              />
+            </div>
+
+            <button className="submit-button" type="submit" disabled={loading}>
+              {loading ? 'Skapar konto...' : 'Registrera konto'}
+            </button>
+          </form>
+        )}
         <p className="login-link">
           Har du redan ett konto? <a onClick={openLoginModal}>Logga in</a>
         </p>
