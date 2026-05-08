@@ -21,10 +21,12 @@ header {
 
 .logo-part1 {
   color: #ffffff;
+  text-transform: uppercase;
 }
 
 .logo-part2 {
   color: #559ce3;
+  text-transform: uppercase;
 }
 
 .logo-part3 {
