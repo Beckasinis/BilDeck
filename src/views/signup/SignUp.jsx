@@ -9,6 +9,8 @@ function SignUpView() {
     confirmPassword: ''
   })
 
+  // Holds loading state during API call
+  const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
 
   // Single handler for all inputs — uses the input's name attribute to update the correct key in formData
@@ -29,17 +31,45 @@ function SignUpView() {
     return null
   }
 
-  // Prevents default form reload and logs current form data
-  function handleSubmit(e) {
+  // Handles form submission — validates input, calls Supabase signup API,
+  // displays error message if something goes wrong
+  async function handleSubmit(e) {
     e.preventDefault()
-    setError(null) // Clear previous errors
+    setError(null)
 
     const validationError = validateForm()
     if (validationError) {
       setError(validationError)
       return
     }
-    console.log('Formulärdata:', formData)
+
+    setLoading(true)
+    try {
+      const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/auth/v1/signup`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          apikey: import.meta.env.VITE_SUPABASE_ANON_KEY,
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          password: formData.password,
+        })
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.msg || data.error_description || 'Något gick fel.')
+      }
+
+      console.log('Användare skapad:', data)
+
+    } catch (err) {
+      setError(err.message)
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -82,15 +112,15 @@ function SignUpView() {
             />
           </div>
 
-          <button className="submit-button" type="submit">
-            Registrera konto
+          <button className="submit-button" type="submit" disabled={loading}>
+            {loading ? 'Skapar konto...' : 'Registrera konto'}
           </button>
         </form>
         <p className="login-link">
           Har du redan ett konto? <a>Logga in</a>
         </p>
       </div>
-    </div >
+    </div>
   )
 }
 
