@@ -48,43 +48,47 @@ function SignUpView() {
         <h1>Sign Up</h1>
 
         {error && <p className="error-message">{error}</p>}
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label>E-post</label>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="E-post"
+            />
+          </div>
 
-        <div className="form-group">
-          <label>E-post</label>
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            placeholder="E-post"
-          />
-        </div>
+          <div className="form-group">
+            <label>Lösenord</label>
+            <input
+              type="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              placeholder="Lösenord"
+            />
+          </div>
 
-        <div className="form-group">
-          <label>Lösenord</label>
-          <input
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            placeholder="Lösenord"
-          />
-        </div>
+          <div className="form-group">
+            <label>Bekräfta lösenord</label>
+            <input
+              type="password"
+              name="confirmPassword"
+              value={formData.confirmPassword}
+              onChange={handleChange}
+              placeholder="Bekräfta lösenord"
+            />
+          </div>
 
-        <div className="form-group">
-          <label>Bekräfta lösenord</label>
-          <input
-            type="password"
-            name="confirmPassword"
-            value={formData.confirmPassword}
-            onChange={handleChange}
-            placeholder="Bekräfta lösenord"
-          />
-        </div>
-
-        <button className="submit-button" type="submit">
-          Registrera konto
-        </button>
+          <button className="submit-button" type="submit">
+            Registrera konto
+          </button>
+        </form>
+        <p className="login-link">
+          Har du redan ett konto? <a>Logga in</a>
+        </p>
       </div>
     </div >
   )
