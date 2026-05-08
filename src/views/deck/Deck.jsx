@@ -34,24 +34,24 @@ export default function DeckView() {
   // Reads fresh from Zustand store to avoid stale closure issues
   // Triggers deck pulse and card fade-in transition on navigation
   function handleNext(direction) {
-  if (direction === 'flip') {
-    cardRef.current?.flip();
-    return;
-  }
-  const freshActiveIds = getActive(categoryIdRef.current);
-  const currentCard = freshActiveIds
-    .map(id => cardsRef.current.find(c => c.id === id))
-    .filter(Boolean)[0];
-  if (!currentCard) return;
+    if (direction === 'flip') {
+      cardRef.current?.flip();
+      return;
+    }
+    const freshActiveIds = getActive(categoryIdRef.current);
+    const currentCard = freshActiveIds
+      .map(id => cardsRef.current.find(c => c.id === id))
+      .filter(Boolean)[0];
+    if (!currentCard) return;
 
-  moveCard(currentCard.id, direction, categoryIdRef.current);
-  setLastReceived(direction);
-  setIsTransitioning(true);
-  setTimeout(() => {
-    setIsTransitioning(false);
-    setLastReceived(null);
-  }, 350);
-}
+    moveCard(currentCard.id, direction, categoryIdRef.current);
+    setLastReceived(direction);
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setIsTransitioning(false);
+      setLastReceived(null);
+    }, 350);
+  }
 
   // Keyboard navigation - listens globally on window
   // Cleaned up on unmount to avoid memory leaks

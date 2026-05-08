@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState, forwardRef, useImperativeHandle } from 'react';
 import './card.css';
+import CategoryIcon from '../CategoryIcon';
 
 const Card = forwardRef(function Card({ question, answer, icon, colorLight, colorDark, onFlip, displayType }, ref) {
   const [isFlipped, setIsFlipped] = useState(false);
@@ -43,7 +44,7 @@ const Card = forwardRef(function Card({ question, answer, icon, colorLight, colo
       >
         <section className="question-side" style={{ backgroundColor: color }}>
           <span className="card-label">FRÅGA</span>
-          <span className="icon">{icon}</span>
+          <CategoryIcon icon={icon} />
           {/* TODO: refactor to switch when more display_types are added */}
           {/* SVG cards render raw SVG markup from the question field.
               The static label gets its own ref for text scaling.
@@ -63,7 +64,7 @@ const Card = forwardRef(function Card({ question, answer, icon, colorLight, colo
 
         <section className="answer-side" style={{ backgroundColor: color }}>
           <span className="card-label">SVAR</span>
-          <span className="icon">{icon}</span>
+          <CategoryIcon icon={icon} />
           <p ref={answerRef}>{answer}</p>
         </section>
       </div>
