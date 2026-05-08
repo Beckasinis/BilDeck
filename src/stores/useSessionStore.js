@@ -1,4 +1,4 @@
-//boilerplate
+
 const useSessionStore = create(
   persist((set) => ({
     user: null,
