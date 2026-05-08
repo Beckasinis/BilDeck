@@ -1,7 +1,10 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router'
 import './signup.css'
 
 function SignUpView() {
+  const navigate = useNavigate()
+
   // Local state holding all form field values
   const [formData, setFormData] = useState({
     email: '',
@@ -63,7 +66,7 @@ function SignUpView() {
         throw new Error(data.msg || data.error_description || 'Något gick fel.')
       }
 
-      console.log('Användare skapad:', data)
+      navigate('/')
 
     } catch (err) {
       setError(err.message)
