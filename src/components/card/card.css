@@ -43,14 +43,7 @@
       font-size: 11px;
     }
 
-    i {
-      font-size: 3rem;
-      flex-shrink: 0;
-
-      @media (orientation: landscape) {
-        display: none;
-      }
-    }
+    .icon {}
 
     p {
       flex: 1;
@@ -65,7 +58,6 @@
       width: 100%;
     }
 
-    /* SVG cards - p gets max 25%, svg-display fills the rest */
     .svg-display {
       flex: 1 1 0;
       display: flex;
@@ -74,13 +66,6 @@
       min-height: 0;
       width: 100%;
 
-      & ~ p,
-      p:has(~ &) {
-        flex: 0 0 auto;
-        max-height: 25%;
-        padding: 0;
-      }
-
       svg {
         width: auto;
         height: auto;
@@ -88,6 +73,13 @@
         max-height: 100%;
       }
     }
+  }
+
+  .svg-display ~ p,
+  p:has(~ .svg-display) {
+    flex: 0 0 auto;
+    max-height: 25%;
+    padding: 0;
   }
 
   .answer-side {

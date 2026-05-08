@@ -29,15 +29,21 @@ const Card = forwardRef(function Card({ question, answer, icon, colorLight, colo
     }
   }));
 
+  // Notifies parent when card is flipped, useful for restoring flip state on re-mount
+  function handleFlip() {
+    setIsFlipped(f => !f);
+    onFlip?.();
+  }
+
   return (
     <article className="card">
       <div
         className={`card-content ${isFlipped ? 'flipped' : ''}`}
-        onClick={() => setIsFlipped(f => !f)}
+        onClick={handleFlip}
       >
         <section className="question-side" style={{ backgroundColor: color }}>
           <span className="card-label">FRÅGA</span>
-          <i>{icon}</i>
+          <span className="icon">{icon}</span>
           {/* TODO: refactor to switch when more display_types are added */}
           {/* SVG cards render raw SVG markup from the question field.
               The static label gets its own ref for text scaling.
@@ -57,7 +63,7 @@ const Card = forwardRef(function Card({ question, answer, icon, colorLight, colo
 
         <section className="answer-side" style={{ backgroundColor: color }}>
           <span className="card-label">SVAR</span>
-          <i>{icon}</i>
+          <span className="icon">{icon}</span>
           <p ref={answerRef}>{answer}</p>
         </section>
       </div>

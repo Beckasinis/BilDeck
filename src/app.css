@@ -39,13 +39,13 @@
   --bg: #F7F9FC;
   --text: #1A1E24;
   --accent: #2278D4;
+  --accent2: #ea832f;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --bg: #12151A;
     --text: #E6EAF0;
-    --accent: #2278D4;
   }
 }
 
