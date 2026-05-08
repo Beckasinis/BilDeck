@@ -8,6 +8,8 @@ function SignUpView() {
 
   // Local state holding all form field values
   const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
     email: '',
     password: '',
     confirmPassword: ''
@@ -28,14 +30,41 @@ function SignUpView() {
   }
 
   function validateForm() {
-    if (!formData.email || !formData.password || !formData.confirmPassword) {
+    if (!formData.email || !formData.password || !formData.confirmPassword || !formData.firstName || !formData.lastName) {
       return 'Alla fält måste fyllas i.'
     }
+
+    const namePattern = /^[a-öA-Ö\s-]+$/
+
     if (formData.password.length < 6) {
       return 'Lösenordet måste vara minst 6 tecken långt.'
     }
     if (formData.password !== formData.confirmPassword) {
       return 'Lösenorden matchar inte.'
+    }
+    if (formData.firstName.trim().length < 2) {
+      return 'Förnamnet måste vara minst 2 tecken.'
+    }
+    if (formData.firstName.trim().length > 50) {
+      return 'Förnamnet får vara max 50 tecken.'
+    }
+    if (!namePattern.test(formData.firstName.trim())) {
+      return 'Förnamnet får bara innehålla bokstäver.'
+    }
+    if (formData.lastName.trim().length < 2) {
+      return 'Efternamnet måste vara minst 2 tecken.'
+    }
+    if (formData.lastName.trim().length > 50) {
+      return 'Efternamnet får vara max 50 tecken.'
+    }
+    if (!namePattern.test(formData.lastName.trim())) {
+      return 'Efternamnet får bara innehålla bokstäver.'
+    }
+    if (formData.email.length > 100) {
+      return 'E-postadressen får vara max 100 tecken.'
+    }
+    if (formData.password.length > 72) {
+      return 'Lösenordet får vara max 72 tecken.'
     }
     return null
   }
@@ -89,10 +118,34 @@ function SignUpView() {
         {error && <p className="error-message">{error}</p>}
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label>E-post</label>
+            <label>Förnamn</label>
+            <input
+              type="text"
+              name="firstName"
+              maxLength={50}
+              value={formData.firstName}
+              onChange={handleChange}
+              placeholder="Förnamn"
+            />
+          </div>
+
+          <div className="form-group">
+            <label>Efternamn</label>
+            <input
+              type="text"
+              name="lastName"
+              maxLength={50}
+              value={formData.lastName}
+              onChange={handleChange}
+              placeholder="Efternamn"
+            />
+          </div>
+          <div className="form-group">
+            <label>E-mail</label>
             <input
               type="email"
               name="email"
+              maxLength={100}
               value={formData.email}
               onChange={handleChange}
               placeholder="E-post"
@@ -104,6 +157,7 @@ function SignUpView() {
             <input
               type="password"
               name="password"
+              maxLength={72}
               value={formData.password}
               onChange={handleChange}
               placeholder="Lösenord"
@@ -115,6 +169,7 @@ function SignUpView() {
             <input
               type="password"
               name="confirmPassword"
+              maxLength={72}
               value={formData.confirmPassword}
               onChange={handleChange}
               placeholder="Bekräfta lösenord"
