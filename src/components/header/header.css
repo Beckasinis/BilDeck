@@ -4,7 +4,6 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: var(--spacing) var(--spacing-lg);
-  background: #000;
   border-bottom: 1px solid #ddd;
   position: sticky;
   top: 0;
@@ -20,15 +19,16 @@ header {
 }
 
 .logo-part1 {
-  color: #ffffff;
+  text-transform: uppercase;
 }
 
 .logo-part2 {
-  color: #559ce3;
+  color: var(--accent)
+  text-transform: uppercase;
 }
 
 .logo-part3 {
-  color: #ea832f;
+  color: var(--accent2)
   margin: 0;
   font-size: 0.75rem;
   font-weight: 600;

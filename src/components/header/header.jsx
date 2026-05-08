@@ -1,5 +1,5 @@
 import './header.css';
-import { useState } from 'react';
+import useModalStore from '../../stores/useModalStore';
 import { Link } from 'react-router'
 import LoginModal from '../loginModal';
 import Dropdown from '../dropdown/Dropdown';
@@ -9,17 +9,7 @@ import Dropdown from '../dropdown/Dropdown';
  * Main navigation header with logo, flashcard categories dropdown and login button
  */
 function Header() {
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
-
-  /**Opens the login modal */
-  const handleLoginClick = () => {
-    setIsLoginModalOpen(true);
-  };
-
-  /** Close the login modal */
-  const handleCloseLoginModal = () => {
-    setIsLoginModalOpen(false);
-  };
+  const { isLoginModalOpen, openLoginModal, closeLoginModal } = useModalStore();
 
   return (
     <header>
@@ -27,10 +17,10 @@ function Header() {
         <img src="/img/apple-touch-icon.png" alt="logo BilDeck" />
         <div>
           <h1>
-            <span className="logo-part1">BIL</span>
-            <span className="logo-part2">DECK</span>
+            <span className="logo-part1">Bil</span>
+            <span className="logo-part2">Deck</span>
           </h1>
-          <p className="logo-part3">TRIMMA TEORIN</p>
+          <p className="logo-part3">Trimma Teorin</p>
         </div>
       </div>
 
@@ -39,11 +29,11 @@ function Header() {
       </nav>
 
       <div className="auth-button">
-        <button onClick={handleLoginClick}>Login</button>
+        <button onClick={openLoginModal}>Login</button>
       </div>
 
       {isLoginModalOpen && (
-        <LoginModal onClose={handleCloseLoginModal} />
+        <LoginModal onClose={closeLoginModal} />
       )}
 
     </header>
