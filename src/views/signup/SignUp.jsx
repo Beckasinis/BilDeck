@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import useModalStore from '../../stores/useModalStore'
 import { useNavigate } from 'react-router'
 import './signup.css'
 
@@ -14,7 +15,12 @@ function SignUpView() {
 
   // Holds loading state during API call
   const [loading, setLoading] = useState(false)
+
+  //Holds any validation or API error message
   const [error, setError] = useState(null)
+
+  //Open login modal from global store
+  const openLoginModal = useModalStore((s) => s.openLoginModal)
 
   // Single handler for all inputs — uses the input's name attribute to update the correct key in formData
   function handleChange(e) {
@@ -120,7 +126,7 @@ function SignUpView() {
           </button>
         </form>
         <p className="login-link">
-          Har du redan ett konto? <a>Logga in</a>
+          Har du redan ett konto? <a onClick={openLoginModal}>Logga in</a>
         </p>
       </div>
     </div>
