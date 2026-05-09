@@ -20,7 +20,7 @@ export default function CompletionScreen({ categories, onReset }) {
         ))}
       </div>
 
-      <h1 className="completion-title">Bra jobbat!</h1>
+      <h2 className="completion-title">Bra jobbat!</h2>
       <p className="completion-subtitle">Du har gått igenom alla kort!</p>
 
       <div className="completion-actions">

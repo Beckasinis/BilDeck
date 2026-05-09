@@ -30,8 +30,8 @@
     inset: 0;
     display: flex;
     flex-direction: column;
-    padding: 1.5rem;
-    gap: 0.5rem;
+    padding: clamp(0.5rem, 3cqh, 1.5rem);
+    gap: clamp(0.25rem, 1cqh, 0.5rem);
     align-items: center;
     backface-visibility: hidden;
     overflow: hidden;
@@ -43,7 +43,10 @@
       font-size: 11px;
     }
 
-    .icon {}
+    .category-icon svg {
+      width: auto;
+      height: clamp(1rem, 12cqh, 5rem);
+    }
 
     p {
       flex: 1;
@@ -51,8 +54,8 @@
       align-items: center;
       justify-content: center;
       line-height: 1.4;
-      padding-top: 1rem;
-      padding-bottom: 2rem;
+      padding-top: clamp(0.25rem, 2cqh, 1rem);
+      padding-bottom: clamp(0.5rem, 4cqh, 2rem);
       text-align: center;
       overflow: hidden;
       width: 100%;

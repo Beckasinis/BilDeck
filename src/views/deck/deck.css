@@ -5,16 +5,17 @@
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto 1fr; 
+  grid-template-rows: auto 1fr;
   grid-template-areas:
     "done active"
-    "card-container card-container";  
+    "card-container card-container";
   gap: 1rem;
-}
+  min-height: 0; 
+  overflow: hidden;
 
-@media (orientation: landscape) {
-  .deck-view {
+  @media (orientation: landscape) {
     max-width: 932px;
+    max-height: 100%;
     grid-template-columns: auto 1fr auto;
     grid-template-rows: 1fr;
     grid-template-areas: "done card-container active";
@@ -79,13 +80,15 @@
   text-align: left;
 }
 
-.card-container { 
+.card-container {
   grid-area: card-container;
   min-height: 0;
+  min-width: 0; 
   container-type: size;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
 @keyframes deck-receive {
