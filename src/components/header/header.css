@@ -29,7 +29,8 @@ header {
 }
 
 .logo-part2 {
-  color: #559ce3;
+  color: var(--accent)
+  text-transform: uppercase;
 }
 
 .logo-part3 {
