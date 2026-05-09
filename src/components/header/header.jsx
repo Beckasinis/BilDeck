@@ -1,5 +1,6 @@
 import './header.css';
 import useModalStore from '../../stores/useModalStore';
+import useSessionStore from '../../stores/useSessionStore';
 import { Link } from 'react-router'
 import LoginModal from '../loginModal';
 import Dropdown from '../dropdown/Dropdown';
@@ -10,6 +11,7 @@ import Dropdown from '../dropdown/Dropdown';
  */
 function Header() {
   const { isLoginModalOpen, openLoginModal, closeLoginModal } = useModalStore();
+  const { user, logout } = useSessionStore()
 
   return (
     <header>
@@ -29,11 +31,15 @@ function Header() {
       </nav>
 
       <div className="auth-button">
-        <button onClick={openLoginModal}>Login</button>
+        {user ? (
+          <button onClick={logout}>Logga ut</button>
+        ) : (
+          <button onClick={openLoginModal}>Login</button>
+        )}
       </div>
 
       {isLoginModalOpen && (
-        <LoginModal onClose={closeLoginModal} />
+        <LoginModal onClose={closeLoginModal} description="Logga in för att spara dina resultat." />
       )}
 
     </header>

@@ -102,6 +102,15 @@ form {
   margin: 0;
 }
 
+.success-message {
+  text-align: center;
+  line-height: 1.6;
+}
+
+.success-message p {
+  margin-bottom: 1.5rem;
+}
+
 /* Responsive */
 @media (max-width: 480px) {
   .signup-card {
