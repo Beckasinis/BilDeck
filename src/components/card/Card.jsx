@@ -1,5 +1,7 @@
 import { useRef, useEffect, useState, forwardRef, useImperativeHandle } from 'react';
 import './card.css';
+import CategoryIcon from '../CategoryIcon';
+import DOMPurify from 'dompurify';
 
 const Card = forwardRef(function Card({ question, answer, icon, colorLight, colorDark, onFlip, displayType }, ref) {
   const [isFlipped, setIsFlipped] = useState(false);
@@ -29,15 +31,21 @@ const Card = forwardRef(function Card({ question, answer, icon, colorLight, colo
     }
   }));
 
+  // Notifies parent when card is flipped, useful for restoring flip state on re-mount
+  function handleFlip() {
+    setIsFlipped(f => !f);
+    onFlip?.();
+  }
+
   return (
     <article className="card">
       <div
         className={`card-content ${isFlipped ? 'flipped' : ''}`}
-        onClick={() => setIsFlipped(f => !f)}
+        onClick={handleFlip}
       >
         <section className="question-side" style={{ backgroundColor: color }}>
           <span className="card-label">FRÅGA</span>
-          <i>{icon}</i>
+          
           {/* TODO: refactor to switch when more display_types are added */}
           {/* SVG cards render raw SVG markup from the question field.
               The static label gets its own ref for text scaling.
@@ -47,7 +55,7 @@ const Card = forwardRef(function Card({ question, answer, icon, colorLight, colo
               <p ref={svgQuestionRef}>Vad betyder denna skylt?</p>
               <div
                 className="svg-display"
-                dangerouslySetInnerHTML={{ __html: question }}
+                dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(question) }}
               />
             </>
           ) : (
@@ -57,7 +65,7 @@ const Card = forwardRef(function Card({ question, answer, icon, colorLight, colo
 
         <section className="answer-side" style={{ backgroundColor: color }}>
           <span className="card-label">SVAR</span>
-          <i>{icon}</i>
+          <CategoryIcon icon={icon} />
           <p ref={answerRef}>{answer}</p>
         </section>
       </div>

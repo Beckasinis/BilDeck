@@ -30,8 +30,8 @@
     inset: 0;
     display: flex;
     flex-direction: column;
-    padding: 1.5rem;
-    gap: 0.5rem;
+    padding: clamp(0.5rem, 3cqh, 1.5rem);
+    gap: clamp(0.25rem, 1cqh, 0.5rem);
     align-items: center;
     backface-visibility: hidden;
     overflow: hidden;
@@ -43,13 +43,9 @@
       font-size: 11px;
     }
 
-    i {
-      font-size: 3rem;
-      flex-shrink: 0;
-
-      @media (orientation: landscape) {
-        display: none;
-      }
+    .category-icon svg {
+      width: auto;
+      height: clamp(1rem, 12cqh, 5rem);
     }
 
     p {
@@ -58,14 +54,13 @@
       align-items: center;
       justify-content: center;
       line-height: 1.4;
-      padding-top: 1rem;
-      padding-bottom: 2rem;
+      padding-top: clamp(0.25rem, 2cqh, 1rem);
+      padding-bottom: clamp(0.5rem, 4cqh, 2rem);
       text-align: center;
       overflow: hidden;
       width: 100%;
     }
 
-    /* SVG cards - p gets max 25%, svg-display fills the rest */
     .svg-display {
       flex: 1 1 0;
       display: flex;
@@ -74,13 +69,6 @@
       min-height: 0;
       width: 100%;
 
-      & ~ p,
-      p:has(~ &) {
-        flex: 0 0 auto;
-        max-height: 25%;
-        padding: 0;
-      }
-
       svg {
         width: auto;
         height: auto;
@@ -88,6 +76,13 @@
         max-height: 100%;
       }
     }
+  }
+
+  .svg-display ~ p,
+  p:has(~ .svg-display) {
+    flex: 0 0 auto;
+    max-height: 25%;
+    padding: 0;
   }
 
   .answer-side {
