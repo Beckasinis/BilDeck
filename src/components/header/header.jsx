@@ -39,7 +39,7 @@ function Header() {
       </div>
 
       {isLoginModalOpen && (
-        <LoginModal onClose={closeLoginModal} />
+        <LoginModal onClose={closeLoginModal} description="Logga in för att spara dina resultat." />
       )}
 
     </header>

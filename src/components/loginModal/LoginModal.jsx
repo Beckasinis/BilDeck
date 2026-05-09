@@ -9,7 +9,7 @@ import useSessionStore from '../../stores/useSessionStore'
  * @param {Object} props - Component props
  * @param {Function} props.onClose - Callback to close the modal
  */
-function LoginModal({ onClose }) {
+function LoginModal({ onClose, description }) {
   const setUser = useSessionStore((s) => s.setUser)
 
   // Local state holding all form field values
@@ -93,6 +93,7 @@ function LoginModal({ onClose }) {
         <button className="modal-close" onClick={onClose}>×</button>
 
         <h1>Login</h1>
+        {description && <p className="modal-description">{description}</p>}
 
         {error && <p className="error-message">{error}</p>}
 
