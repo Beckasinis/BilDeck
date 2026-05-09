@@ -26,10 +26,11 @@ header {
 
 .logo-part1 {
   color: var(--text);
+  text-transform: uppercase;
 }
 
 .logo-part2 {
-  color: var(--accent)
+  color: var(--accent);
   text-transform: uppercase;
 }
 
