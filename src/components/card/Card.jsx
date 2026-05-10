@@ -96,16 +96,25 @@ function useFitText(ref, text) {
     const p = ref.current;
     if (!p) return;
 
-    let size = 48;
-    p.style.fontSize = `${size}px`;
-
-    while (
-      (p.scrollHeight > p.clientHeight || p.scrollWidth > p.clientWidth)
-      && size > 10
-    ) {
-      size -= 0.5;
+    function fit() {
+      let size = 48;
       p.style.fontSize = `${size}px`;
+
+      while (
+        (p.scrollHeight > p.clientHeight || p.scrollWidth > p.clientWidth)
+        && size > 10
+      ) {
+        size -= 0.5;
+        p.style.fontSize = `${size}px`;
+      }
     }
+
+    fit();
+
+    const observer = new ResizeObserver(fit);
+    observer.observe(p);
+
+    return () => observer.disconnect();
   }, [text]);
 }
 
