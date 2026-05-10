@@ -87,5 +87,34 @@
 
   .answer-side {
     transform: rotateY(180deg);
+
+    .icon-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      align-self: stretch;
+    }
+
+    .icon-row-spacer {
+      width: clamp(1rem, 8cqh, 3rem);
+      flex-shrink: 0;
+    }
+
+    .info-trigger {
+      background: none;
+      border: none;
+      padding-right: 1em;
+      color: var(--accent);
+      cursor: pointer;
+      flex-shrink: 0;
+
+      svg {
+        width: auto;
+        height: clamp(1rem, 8cqh, 3rem);
+      }
+    }
   }
+  
 }
+

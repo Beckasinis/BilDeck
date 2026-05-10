@@ -1,6 +1,6 @@
 import { Link } from 'react-router';
 import './completion.css';
-import CategoryIcon from '../CategoryIcon';
+import CategoryIcon from '../icons/CategoryIcon';
 
   // TODO: add offline category caching to Zustand so categories are available without network
 export default function CompletionScreen({ categories, onReset }) {

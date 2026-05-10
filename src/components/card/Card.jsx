@@ -1,10 +1,13 @@
 import { useRef, useEffect, useState, forwardRef, useImperativeHandle } from 'react';
 import './card.css';
-import CategoryIcon from '../CategoryIcon';
+import CategoryIcon from '../icons/CategoryIcon';
 import DOMPurify from 'dompurify';
+import InfoIcon from '../icons/InfoIcon';
+import InfoModal from '../infoModal';
 
-const Card = forwardRef(function Card({ question, answer, icon, colorLight, colorDark, onFlip, displayType }, ref) {
+const Card = forwardRef(function Card({ question, answer, info, icon, colorLight, colorDark, onFlip, displayType }, ref) {
   const [isFlipped, setIsFlipped] = useState(false);
+  const [infoOpen, setInfoOpen] = useState(false);
 
   // Detect dark mode
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -39,6 +42,11 @@ const Card = forwardRef(function Card({ question, answer, icon, colorLight, colo
 
   return (
     <article className="card">
+      <InfoModal
+        info={info}
+        isOpen={infoOpen}
+        onClose={() => setInfoOpen(false)}
+      />
       <div
         className={`card-content ${isFlipped ? 'flipped' : ''}`}
         onClick={handleFlip}
@@ -59,13 +67,22 @@ const Card = forwardRef(function Card({ question, answer, icon, colorLight, colo
               />
             </>
           ) : (
+            <>
+            <CategoryIcon icon={icon} />
             <p ref={questionRef}>{question}</p>
+            </>
           )}
         </section>
 
         <section className="answer-side" style={{ backgroundColor: color }}>
           <span className="card-label">SVAR</span>
-          <CategoryIcon icon={icon} />
+          <div className="icon-row">
+            <div className="icon-row-spacer" />
+            <CategoryIcon icon={icon} />
+            <button className="info-trigger" onClick={e => { e.stopPropagation(); setInfoOpen(true); }}>
+              <InfoIcon />
+            </button>
+          </div>
           <p ref={answerRef}>{answer}</p>
         </section>
       </div>
@@ -81,16 +98,25 @@ function useFitText(ref, text) {
     const p = ref.current;
     if (!p) return;
 
-    let size = 48;
-    p.style.fontSize = `${size}px`;
-
-    while (
-      (p.scrollHeight > p.clientHeight || p.scrollWidth > p.clientWidth)
-      && size > 10
-    ) {
-      size -= 0.5;
+    function fit() {
+      let size = 48;
       p.style.fontSize = `${size}px`;
+
+      while (
+        (p.scrollHeight > p.clientHeight || p.scrollWidth > p.clientWidth)
+        && size > 10
+      ) {
+        size -= 0.5;
+        p.style.fontSize = `${size}px`;
+      }
     }
+
+    fit();
+
+    const observer = new ResizeObserver(fit);
+    observer.observe(p);
+
+    return () => observer.disconnect();
   }, [text]);
 }
 
