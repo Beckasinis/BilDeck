@@ -112,9 +112,12 @@ function SignUpView() {
 
       logout()
       setSuccess(true)
-
     } catch (err) {
-      setError(err.message)
+      if (err.name === 'TypeError') {
+        setError('Kunde inte ansluta till servern. Kontrollera din internetanslutning.')
+      } else {
+        setError(err.message)
+      }
     } finally {
       setLoading(false)
     }

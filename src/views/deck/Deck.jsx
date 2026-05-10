@@ -14,7 +14,7 @@ export default function DeckView() {
   const cardRef = useRef(null);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [lastReceived, setLastReceived] = useState(null); // 'done' or 'active'
-
+  const [fetchError, setFetchError] = useState(null)
   const { setCards: setStoreCards, moveCard, getActive, getDone, resetDeck } = useDeckStore();
 
   // Ref to always have latest cards array available in event handlers
@@ -105,16 +105,20 @@ export default function DeckView() {
   // Initializes Zustand store with fetched cards for current category
   useEffect(() => {
     async function fetchData() {
-      const [fetchedCards, fetchedCategories] = await Promise.all([
-        getCards(),
-        getCategories()
-      ]);
-      setCards(fetchedCards);
-      setCategories(fetchedCategories);
-      setStoreCards(
-        fetchedCards.filter(c => c.category_id === selectedCategoryId),
-        selectedCategoryId
-      );
+      try {
+        const [fetchedCards, fetchedCategories] = await Promise.all([
+          getCards(),
+          getCategories()
+        ]);
+        setCards(fetchedCards);
+        setCategories(fetchedCategories);
+        setStoreCards(
+          fetchedCards.filter(c => c.category_id === selectedCategoryId),
+          selectedCategoryId
+        );
+      } catch (err) {
+        setFetchError('Kunde inte hämta korten. Kontrollera din internetanslutning och försök igen.');
+      }
     }
     fetchData();
   }, [selectedCategoryId]);
@@ -129,28 +133,30 @@ export default function DeckView() {
   const currentCard = categoryCards[0];
   const currentCategory = categories.find(c => c.id === currentCard?.category_id);
 
-  // No cards loaded - bad connection or empty category
+  //Bad connection or other fetch error
+  if (fetchError) return <p className="error-message">{fetchError}</p>
+  // No cards loaded - empty category
   if (!cards.length) return <p>No cards available</p>;
 
-if (!currentCard) return (
-  <CompletionScreen
-    categories={categories}
-    onReset={() => resetDeck(selectedCategoryId)}
-  />
-);
+  if (!currentCard) return (
+    <CompletionScreen
+      categories={categories}
+      onReset={() => resetDeck(selectedCategoryId)}
+    />
+  );
 
-return (
+  return (
     <section className="deck-view">
       <div className="deck-done">
-       <img 
-          src="/img/deck-left.png" 
+        <img
+          src="/img/deck-left.png"
           alt="Klar kort hög"
           className={`deck-img ${doneIds.length > 0 ? 'active' : 'inactive'} ${lastReceived === 'done' ? 'receiving' : ''}`}
         />
         <div className="deck-info">
           <span>Klar: {doneIds.length}</span>
           {doneIds.length > 0 && (
-            <button 
+            <button
               className="reset-button"
               onClick={() => resetDeck(selectedCategoryId)}
             >
@@ -164,8 +170,8 @@ return (
         <div className="deck-info">
           <span>Aktiv: {activeIds.length}</span>
         </div>
-       <img 
-          src="/img/deck-right.png" 
+        <img
+          src="/img/deck-right.png"
           alt="Aktiv kort hög"
           className={`deck-img active ${lastReceived === 'active' ? 'receiving' : ''}`}
         />
@@ -183,7 +189,7 @@ return (
             displayType={currentCategory?.display_type}
             className="card-fade-in"
           />
-          )}
+        )}
       </div>
     </section>
   );
