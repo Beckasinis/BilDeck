@@ -93,8 +93,9 @@ function LoginModal({ onClose, description }) {
   }
 
   return (
-    <div className="modal">
+    <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content">
+        <button className="modal-close" onClick={onClose} aria-label="Stäng">✕</button>
         {description && <p className="modal-description">{description}</p>}
 
         {error && <p className="error-message">{error}</p>}
