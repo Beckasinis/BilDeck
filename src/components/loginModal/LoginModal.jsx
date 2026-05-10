@@ -82,17 +82,19 @@ function LoginModal({ onClose, description }) {
       navigate('/')
 
     } catch (err) {
-      setError(err.message)
+      if (err.name === 'TypeError') {
+        setError('Kunde inte ansluta till servern. Kontrollera din internetanslutning.')
+      } else {
+        setError(err.message)
+      }
     } finally {
       setLoading(false)
     }
   }
-  return (
-    <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-        <button className="modal-close" onClick={onClose}>×</button>
 
-        <h1>Login</h1>
+  return (
+    <div className="modal">
+      <div className="modal-content">
         {description && <p className="modal-description">{description}</p>}
 
         {error && <p className="error-message">{error}</p>}
@@ -132,7 +134,7 @@ function LoginModal({ onClose, description }) {
         <p className="signup-link">Inget konto? <Link to="/signup" onClick={onClose}>Registrera dig</Link></p>
       </div>
     </div>
-  );
+  )
 }
 
-export default LoginModal;
+export default LoginModal

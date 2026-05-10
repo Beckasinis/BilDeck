@@ -18,9 +18,9 @@ header {
   align-items: center;
   gap: 0.75rem;
 
-  img{
-  width: auto;
-  height: 3rem;
+  img {
+    width: auto;
+    height: 3rem;
   }
 }
 
