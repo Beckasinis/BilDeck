@@ -177,6 +177,7 @@ return (
             ref={cardRef}
             question={currentCard.question}
             answer={currentCard.answer}
+            info={currentCard.info}
             icon={currentCategory?.icon}
             colorLight={currentCategory?.color_light}
             colorDark={currentCategory?.color_dark}

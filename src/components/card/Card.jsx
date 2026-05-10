@@ -3,9 +3,11 @@ import './card.css';
 import CategoryIcon from '../icons/CategoryIcon';
 import DOMPurify from 'dompurify';
 import InfoIcon from '../icons/InfoIcon';
+import InfoModal from '../infoModal';
 
-const Card = forwardRef(function Card({ question, answer, icon, colorLight, colorDark, onFlip, displayType }, ref) {
+const Card = forwardRef(function Card({ question, answer, info, icon, colorLight, colorDark, onFlip, displayType }, ref) {
   const [isFlipped, setIsFlipped] = useState(false);
+  const [infoOpen, setInfoOpen] = useState(false);
 
   // Detect dark mode
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -40,6 +42,11 @@ const Card = forwardRef(function Card({ question, answer, icon, colorLight, colo
 
   return (
     <article className="card">
+      <InfoModal
+        info={info}
+        isOpen={infoOpen}
+        onClose={() => setInfoOpen(false)}
+      />
       <div
         className={`card-content ${isFlipped ? 'flipped' : ''}`}
         onClick={handleFlip}
@@ -72,7 +79,7 @@ const Card = forwardRef(function Card({ question, answer, icon, colorLight, colo
           <div className="icon-row">
             <div className="icon-row-spacer" />
             <CategoryIcon icon={icon} />
-            <button className="info-trigger" onClick={e => { e.stopPropagation(); onInfo?.(); }}>
+            <button className="info-trigger" onClick={e => { e.stopPropagation(); setInfoOpen(true); }}>
               <InfoIcon />
             </button>
           </div>
