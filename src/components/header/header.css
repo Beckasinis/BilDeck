@@ -4,10 +4,10 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: var(--spacing) var(--spacing-lg);
-  background: var(--bg);
+  background: var(--dark-bg);
   border-bottom: 5px solid transparent;
   background-image:
-    linear-gradient(var(--bg), var(--bg)),
+    linear-gradient(var(--dark-bg), var(--dark-bg)),
     linear-gradient(135deg, var(--accent), var(--accent2));
   background-origin: border-box;
   background-clip: padding-box, border-box;
@@ -30,7 +30,7 @@ header {
 }
 
 .logo-part1 {
-  color: var(--text);
+  color: var(--light-text);
   text-transform: uppercase;
 }
 

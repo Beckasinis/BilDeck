@@ -40,6 +40,14 @@
   --text: #1A1E24;
   --accent: #2278D4;
   --accent2: #ea832f;
+
+  --dark-text: #1A1E24;
+  --light-text: #E6EAF0;
+  --dark-bg: #12151A;
+  --light-bg: #F7F9FC;
+
+  --menu-link-text: #ffffff;
+
 }
 
 @media (prefers-color-scheme: dark) {
