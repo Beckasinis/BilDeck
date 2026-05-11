@@ -138,12 +138,11 @@ export default function DeckView() {
   // No cards loaded - empty category
   if (!cards.length) return <p>No cards available</p>;
 
-  if (!currentCard) return (
-    <CompletionScreen
-      categories={categories}
-      onReset={() => resetDeck(selectedCategoryId)}
-    />
-  );
+  useEffect(() => {
+    if (!currentCard && cards.length > 0) {
+      resetDeck(selectedCategoryId);
+    }
+  }, [currentCard]);
 
   return (
     <section className="deck-view">
