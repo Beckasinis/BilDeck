@@ -1,55 +1,27 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
-import { getCategories } from '../../services/deckService';
+import useCategoryStore from '../../stores/useCategoryStore';
 import './dropdown.css';
+import CategoryIcon from '../Icons/CategoryIcon';
 
-/**
- * Dropdown Component
- * Displays a dropdown menu with flashcard categories and handles navigation
- */
 function Dropdown() {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
-
-  // Category data fetched from Supabase
-  const [categories, setCategories] = useState([]);
+  const { categories, fetchIfNeeded } = useCategoryStore();
 
   useEffect(() => {
-    async function fetchCategories() {
-      try {
-        const data = await getCategories();
-        setCategories(data);
-      } catch (error) {
-        console.error('Failed to fetch categories:', error);
-      }
-    }
-    fetchCategories();
+    fetchIfNeeded();
   }, []);
 
-  /**
-   * Toggles the dropdown open/closed state
-   */
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
-  };
+  const toggleDropdown = () => setIsOpen(prev => !prev);
 
-  /**
-   * Handles category selection and navigation
-   * @param {number} categoryId - The ID of the selected category
-   */
   const handleCategorySelect = (categoryId) => {
     navigate(`/deck?subject=${categoryId}`);
     setIsOpen(false);
   };
 
-  /**
-   * Closes dropdown when clicking outside
-   * @param {Event} e - The click event
-   */
   const handleClickOutside = (e) => {
-    if (isOpen && !e.currentTarget.contains(e.target)) {
-      setIsOpen(false);
-    }
+    if (isOpen && !e.currentTarget.contains(e.target)) setIsOpen(false);
   };
 
   return (
@@ -57,7 +29,6 @@ function Dropdown() {
       <button className="dropdown-button" onClick={toggleDropdown}>
         Flashcards
       </button>
-
       {isOpen && (
         <ul className="dropdown-menu">
           {categories.map((category) => (
@@ -66,6 +37,7 @@ function Dropdown() {
                 className="dropdown-item"
                 onClick={() => handleCategorySelect(category.id)}
               >
+                <CategoryIcon icon={category.icon} />
                 {category.name}
               </button>
             </li>

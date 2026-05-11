@@ -9,6 +9,7 @@ import useDeckStore from '../../stores/useDeckStore';
 export default function DeckView() {
   const [cards, setCards] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [searchParams] = useSearchParams();
   const selectedCategoryId = searchParams.get('subject');
   const cardRef = useRef(null);
@@ -118,6 +119,8 @@ export default function DeckView() {
         );
       } catch (err) {
         setFetchError('Kunde inte hämta korten. Kontrollera din internetanslutning och försök igen.');
+      } finally {
+        setIsLoading(false);
       }
     }
     fetchData();
@@ -133,10 +136,17 @@ export default function DeckView() {
   const currentCard = categoryCards[0];
   const currentCategory = categories.find(c => c.id === currentCard?.category_id);
 
-  //Bad connection or other fetch error
+  // Återställer alla kort till active när spelaren klarar hela leken
+  // Körs via useEffect för att undvika state-uppdatering direkt i render
+  useEffect(() => {
+    if (!currentCard && cards.length > 0) {
+      resetDeck(selectedCategoryId);
+    }
+  }, [currentCard]);
+
   if (fetchError) return <p className="error-message">{fetchError}</p>
-  // No cards loaded - empty category
-  if (!cards.length) return <p>No cards available</p>;
+  if (isLoading) return <p>Laddar kort...</p>
+  if (!cards.length) return <p>Inga kort tillgängliga i den här kategorin.</p>
 
   if (!currentCard) return (
     <CompletionScreen
