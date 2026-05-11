@@ -22,9 +22,7 @@ function HomeView() {
         <h1>Välkommen, {user.user_metadata?.first_name}!</h1>
       )}
       <Hero />
-      <ErrorBoundary>
         <ScienceSection />
-      </ErrorBoundary>
     </div>
   );
 }
