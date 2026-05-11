@@ -91,19 +91,35 @@ main {
   display: flex;
   flex-direction: column;
 }
-
+ 
+h1 {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 600;
+  font-size: clamp(36px, 6vw, 72px);
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+}
+ 
 h2 {
   font-family: 'Barlow', sans-serif;
   font-weight: 400;
-  font-size: 40px;
-  line-height: 50px;
+  font-size: clamp(32px, 5vw, 58px);
+  line-height: 1.15;
   letter-spacing: 0.01em;
 }
-
+ 
 h3 {
   font-family: 'Barlow', sans-serif;
   font-weight: 600;
-  font-size: 24px;
-  line-height: 30px;
+  font-size: clamp(20px, 3vw, 28px);
+  line-height: 1.25;
+  letter-spacing: 0.01em;
+}
+ 
+h4 {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 600;
+  font-size: clamp(16px, 2vw, 20px);
+  line-height: 1.35;
   letter-spacing: 0.01em;
 }

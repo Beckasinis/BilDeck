@@ -8,24 +8,6 @@
   gap: clamp(2rem, 5vw, 4rem);
 }
 
-.science-heading {
-  font-family: 'Barlow', sans-serif;
-  font-size: clamp(1.75rem, 4vw, 2.75rem);
-  font-weight: 700;
-  color: var(--text);
-  text-align: center;
-  margin: 0;
-}
-
-.science-subheading {
-  font-family: 'Barlow', sans-serif;
-  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-  font-weight: 600;
-  color: var(--text);
-  margin: 0 0 1rem;
-  text-align: left;
-}
-
 .science-block {
   display: flex;
   flex-direction: column;
@@ -38,12 +20,6 @@
   gap: 0.85rem;
 
   p {
-    font-family: 'Outfit', sans-serif;
-    font-size: clamp(0.9rem, 1.5vw, 1rem);
-    line-height: 1.75;
-    color: var(--text);
-    margin: 0;
-    opacity: 0.85;
     text-align: left;
   }
 }

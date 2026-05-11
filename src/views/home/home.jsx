@@ -3,6 +3,7 @@ import useSessionStore from '../../stores/useSessionStore.js'
 import ScienceSection from '../../components/science/ScienceSection.jsx';
 import { Component } from 'react';
 import Hero from '../../components/hero/Hero';
+import HowToSection from '../../components/howto/HowToSection.jsx';
 
 class ErrorBoundary extends Component {
   state = { error: null };
@@ -22,9 +23,8 @@ function HomeView() {
         <h1>Välkommen, {user.user_metadata?.first_name}!</h1>
       )}
       <Hero />
-      <ErrorBoundary>
         <ScienceSection />
-      </ErrorBoundary>
+        <HowToSection />
     </div>
   );
 }
