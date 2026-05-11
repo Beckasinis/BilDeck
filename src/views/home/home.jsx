@@ -15,6 +15,10 @@ class ErrorBoundary extends Component {
 function HomeView() {
   return (
     <div className="home-view">
+      {user && (
+        <h2>Välkommen, {user.user_metadata?.first_name}!</h2>
+      )}
+      <p>Vad vill du gasa på med idag?</p>
       <h1>HOME</h1>
       <ErrorBoundary>
         <ScienceSection />

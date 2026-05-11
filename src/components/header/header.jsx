@@ -16,6 +16,7 @@ function Header() {
   return (
     <>
       <header>
+        <a href="/" style={{ textDecoration: 'none', cursor: 'pointer' }}></a>
         <div className="logo">
           <img src="/img/apple-touch-icon.png" alt="logo BilDeck" />
           <div>
