@@ -1,0 +1,208 @@
+.science-section {
+  padding: clamp(2rem, 6vw, 5rem) clamp(1rem, 4vw, 2rem);
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2rem, 5vw, 4rem);
+}
+
+.science-heading {
+  font-family: 'Barlow', sans-serif;
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  font-weight: 700;
+  color: var(--text);
+  text-align: center;
+  margin: 0;
+}
+
+.science-subheading {
+  font-family: 'Barlow', sans-serif;
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 1rem;
+  text-align: left;
+}
+
+.science-block {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.science-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+
+  p {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
+    line-height: 1.75;
+    color: var(--text);
+    margin: 0;
+    opacity: 0.85;
+    text-align: left;
+  }
+}
+
+/* Retention cards */
+.retention-cards-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.retention-cards {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.5rem, 2vw, 0.875rem);
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+}
+
+.retention-card {
+  background: var(--bg);
+  border: 1px solid color-mix(in srgb, var(--text) 12%, transparent);
+  border-radius: 12px;
+  padding: clamp(0.75rem, 2vw, 1.25rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  flex: 1;
+
+  &.retention-card--accent {
+    border: 2px solid var(--accent);
+  }
+}
+
+.retention-badge {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
+  color: var(--accent);
+  padding: 2px 8px;
+  border-radius: 4px;
+  width: fit-content;
+
+  &.retention-badge--muted {
+    background: color-mix(in srgb, var(--text) 8%, transparent);
+    color: var(--text);
+    opacity: 0.6;
+  }
+}
+
+.retention-icon {
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+}
+
+.retention-label {
+  font-family: 'Barlow', sans-serif;
+  font-size: clamp(0.85rem, 1.5vw, 1rem);
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+}
+
+.retention-desc {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(0.78rem, 1.2vw, 0.875rem);
+  line-height: 1.6;
+  color: var(--text);
+  opacity: 0.75;
+  margin: 0;
+}
+
+.retention-source {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.7rem;
+  color: var(--text);
+  opacity: 0.45;
+  margin: 0.25rem 0 0;
+}
+
+/* Forgetting curve chart */
+.chart-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.chart-legend {
+  display: flex;
+  gap: 1rem;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.75rem;
+  color: var(--text);
+  opacity: 0.7;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.legend-line {
+  display: inline-block;
+  width: 18px;
+  height: 2px;
+
+  &.legend-line--solid {
+    background: #2278D4;
+  }
+
+  &.legend-line--dashed {
+    background: linear-gradient(
+      to right,
+      #ea832f 0%,
+      #ea832f 55%,
+      transparent 55%,
+      transparent 100%
+    );
+    background-size: 9px 2px;
+  }
+}
+
+.chart-canvas-wrapper {
+  position: relative;
+  width: 100%;
+  height: 200px;
+}
+
+.chart-source {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.65rem;
+  color: var(--text);
+  opacity: 0.4;
+  margin: 0;
+}
+
+/* Metacognition block */
+.science-meta {
+  flex-direction: column;
+  align-items: flex-start;
+  background: color-mix(in srgb, var(--accent) 6%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 20%, transparent);
+  border-radius: 16px;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  gap: clamp(1rem, 3vw, 1.5rem);
+
+
+ @media (min-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+
+.science-meta-icon {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  padding-top: 0.15rem;
+  flex-shrink: 0;
+}
