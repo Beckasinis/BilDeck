@@ -5,7 +5,12 @@ header {
   align-items: center;
   padding: var(--spacing) var(--spacing-lg);
   background: var(--bg);
-  border-bottom: 1px solid #ddd;
+  border-bottom: 5px solid transparent;
+  background-image:
+    linear-gradient(var(--bg), var(--bg)),
+    linear-gradient(135deg, var(--accent), var(--accent2));
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
   position: sticky;
   top: 0;
   z-index: 10;

@@ -11,9 +11,7 @@ function HomeView() {
       {user && (
         <h2>Välkommen, {user.user_metadata?.first_name}!</h2>
       )}
-      <h1>HOME</h1>
-      <p>Här kommer info om sidan</p>
-
+      <p>Vad vill du gasa på med idag?</p>
     </div>
   );
 }
