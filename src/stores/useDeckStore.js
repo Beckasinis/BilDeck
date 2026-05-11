@@ -5,8 +5,7 @@ const useDeckStore = create(
   persist(
     (set, get) => ({
       // Ordered active queue - hålls bara i minnet, byggs om från progress vid sidladdning
-      // Todo: synkronisera progress till Supabase 
-queue: {},
+      // Todo: synkronisera progress till Supabase
       queue: {},
       // Kortprogress - sparas i localStorage
       // {
@@ -17,6 +16,7 @@ queue: {},
       progress: {},
 
       // Initialiserar kort för en kategori med hänsyn till redan sparad progress
+      // Blandar kön slumpmässigt vid varje ny session
       setCards: (cards, categoryId) => set((state) => {
         const existing = state.progress[categoryId] || {};
 
@@ -29,10 +29,11 @@ queue: {},
           };
         });
 
-        // Bygg kö från kort som inte är klara, i ursprunglig ordning
+        // Bygg kö från kort som inte är klara, i slumpad ordning
         const activeQueue = cards
           .map(c => c.id)
-          .filter(id => updatedProgress[id].status === 'active');
+          .filter(id => updatedProgress[id].status === 'active')
+          .sort(() => Math.random() - 0.5);
 
         return {
           progress: {
@@ -91,7 +92,8 @@ queue: {},
           .map(([id]) => id);
       },
 
-      // Återställer alla kort till 'active' för en kategori - triggas av användaren via "Starta om"-knappen
+      // Återställer alla kort till 'active' för en kategori - triggas när spelaren klarar hela leken
+      // eller via "Starta om"-knappen. Blandar kön slumpmässigt vid återstart.
       resetDeck: (categoryId) => set((state) => {
         const category = state.progress[categoryId] || {};
 
@@ -108,7 +110,7 @@ queue: {},
           },
           queue: {
             ...state.queue,
-            [categoryId]: Object.keys(category),
+            [categoryId]: Object.keys(category).sort(() => Math.random() - 0.5),
           }
         };
       }),
