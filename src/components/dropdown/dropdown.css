@@ -56,15 +56,22 @@
   cursor: pointer;
   font-size: 1rem;
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .dropdown-item:hover {
   background: none;
   text-decoration: underline;
-  text-decoration-color: var(--dark-text);
+  text-decoration-color: var(--light-text);
 }
 
 .dropdown-item:last-child {
   border-radius: 0 0 4px 4px;
 }
 
+.category-icon svg {
+  width: auto;
+  height: 2rem;
+}
