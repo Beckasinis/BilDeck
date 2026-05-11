@@ -94,7 +94,7 @@ function LoginModal({ onClose, description }) {
 
   return (
     <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-content">
+      <div className="modal-content" onClick={e => e.stopPropagation()}>
         <button className="modal-close" onClick={onClose} aria-label="Stäng">✕</button>
         {description && <p className="modal-description">{description}</p>}
 

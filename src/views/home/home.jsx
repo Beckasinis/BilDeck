@@ -2,6 +2,7 @@ import './home.css'
 import useSessionStore from '../../stores/useSessionStore.js'
 import ScienceSection from '../../components/science/ScienceSection.jsx';
 import { Component } from 'react';
+import Hero from '../../components/hero/Hero';
 
 class ErrorBoundary extends Component {
   state = { error: null };
@@ -18,10 +19,9 @@ function HomeView() {
   return (
     <div className="home-view">
       {user && (
-        <h2>Välkommen, {user.user_metadata?.first_name}!</h2>
+        <h1>Välkommen, {user.user_metadata?.first_name}!</h1>
       )}
-      <p>Vad vill du gasa på med idag?</p>
-      <h1>HOME</h1>
+      <Hero />
       <ErrorBoundary>
         <ScienceSection />
       </ErrorBoundary>
