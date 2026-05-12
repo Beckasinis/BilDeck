@@ -8,7 +8,7 @@
     align-items: stretch;
     height: clamp(250px, 40vw, 480px);
     margin-bottom: 2rem;
-    
+
   }
 
   @media (min-width: 1200px) {
@@ -139,7 +139,9 @@
 
 @media (max-width: 699px) and (orientation: landscape) {
   .hero {
-    flex-direction: row;
+    flex-direction: column;
+    height: auto;
+    overflow: hidden;
   }
 
   .hero-image {
@@ -158,10 +160,39 @@
   }
 
   .hero-content {
-    flex: 1 1 0;
-    justify-content: start;
-    align-items: flex-start;
-    text-align: left;
-    padding: 1rem;
+    flex: none;
+    width: 100%;
+    padding: 2rem 1.25rem;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    flex-direction: column;
+    height: auto;
+    overflow: hidden;
+  }
+
+  .hero-image {
+    flex: none;
+    width: 100%;
+    height: 550px;
+    object-position: center top;
+    content: url('/img/hero_portrait.png');
+  }
+
+  .hero-content {
+    flex: none;
+    width: 100%;
+    padding: 2rem 1.25rem;
+    align-items: center;
+    text-align: center;
+    height: auto;
+  }
+
+  .hero-title {
+    font-size: 1.8rem;
   }
 }
