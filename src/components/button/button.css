@@ -28,20 +28,20 @@
     opacity: 0.5;
     cursor: not-allowed;
   }
+}
 
-  &--primary {
-    background: var(--accent);
-    color: var(--dark-text);
-  }
+.btn--primary {
+  background: var(--accent);
+  color: var(--dark-text);
+}
 
-  &--secondary {
-    background: var(--accent2);
-    color: var(--dark-text);
-  }
+.btn--secondary {
+  background: var(--accent2);
+  color: var(--dark-text);
+}
 
-  &--outline {
-    background: transparent;
-    color: var(--text);
-    border: var(--border);
-  }
+.btn--outline {
+  background: transparent;
+  color: var(--text);
+  border: var(--border);
 }

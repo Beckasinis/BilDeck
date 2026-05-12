@@ -1,4 +1,4 @@
-import './button.css';
+import './button.css'
 
 /**
  * Button – reusable button component

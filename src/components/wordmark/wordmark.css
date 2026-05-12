@@ -2,20 +2,20 @@
   font-family: 'Barlow', sans-serif;
   font-weight: 400;
   text-transform: uppercase;
+}
 
-  &__bil {
-    color: currentColor;
-  }
+.wordmark__bil {
+  color: currentColor;
+}
 
-  &__deck {
-    color: var(--accent);
-  }
+.wordmark__deck {
+  color: var(--accent);
+}
 
-  &--light &__bil {
-    color: var(--light-text);
-  }
+.wordmark--light .wordmark__bil {
+  color: var(--light-text);
+}
 
-  &--dark &__bil {
-    color: var(--dark-text);
-  }
+.wordmark--dark .wordmark__bil {
+  color: var(--dark-text);
 }
