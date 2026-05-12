@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { supabase } from '../../utils/supabase';
+import { supabase } from '../../../../utils/supabase';
 import './testimonials.css';
 
 // Renders star rating based on rating prop, filled stars for rating value and empty stars for the rest up to 5
