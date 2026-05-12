@@ -1,10 +1,11 @@
 import './home.css'
 import useSessionStore from '../../stores/useSessionStore.js'
-import ScienceSection from '../../components/science/ScienceSection.jsx';
 import { Component } from 'react';
 import Hero from '../../components/hero/Hero';
-import HowToSection from '../../components/howto/HowToSection.jsx';
 import Testimonials from '../../components/testimonials/Testimonials.jsx';
+import HowToSection from '../../components/howto/HowToSection.jsx';
+import ProductSection from '../../components/product/ProductSection.jsx';
+import ScienceSection from '../../components/science/ScienceSection.jsx';
 
 class ErrorBoundary extends Component {
   state = { error: null };
@@ -22,8 +23,9 @@ function HomeView() {
     <div className="home-view">
       <Hero />
       <Testimonials />
-      <ScienceSection />
       <HowToSection />
+      <ProductSection />
+      <ScienceSection />
     </div>
   );
 }
