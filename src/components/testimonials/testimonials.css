@@ -1,6 +1,5 @@
 .testimonials {
   padding: clamp(2rem, 5vw, 5rem) clamp(1rem, 4vw, 2rem);
-  background: #0a0a0f;
   border-radius: 16px;
 }
 

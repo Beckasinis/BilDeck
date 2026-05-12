@@ -24,10 +24,6 @@ function HomeView() {
       <Testimonials />
       <ScienceSection />
       <HowToSection />
-      <ErrorBoundary>
-        <ScienceSection />
-      </ErrorBoundary>
-
     </div>
   );
 }
