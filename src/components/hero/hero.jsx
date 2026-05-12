@@ -8,10 +8,12 @@ function Hero() {
   if (user) {
     return (
       <section className="hero hero--logged-in">
-        <picture className="hero-image">
-          <source media="(max-width: 600px)" srcSet="/img/hero_portrait.png" />
-          <img src="/img/hero_landscape.png" alt="" />
-        </picture>
+        <div className="hero-image">
+          <picture>
+  <source media="(max-width: 699px) and (orientation: portrait)" srcSet="/img/hero_portrait2.png" />
+  <img src="/img/hero_landscape.png" alt="" />
+          </picture>
+        </div>
         <div className="hero-content">
           <div className="hero-eyebrow">
             Välkommen tillbaka, {firstName}!
@@ -29,11 +31,12 @@ function Hero() {
 
   return (
     <section className="hero hero--logged-out">
-      <img
-        src="/img/hero_landscape.png"
-        alt="Hero image"
-        className="hero-image"
-      />
+      <div className="hero-image">
+       <picture>
+  <source media="(max-width: 688px) and (orientation: portrait)" srcSet="/img/hero_portrait2.png" />
+  <img src="/img/hero_landscape.png" alt="" />
+</picture>
+      </div>
       <div className="hero-content">
         <div className="hero-eyebrow">
           <span className="hero-eyebrow__line"></span>
