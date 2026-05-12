@@ -1,6 +1,6 @@
 import './hero.css';
 import useSessionStore from '../../../stores/useSessionStore';
-import Button from '../../../components/Button';
+import Button from '../../../components/button';
 
 function Hero() {
   const { user } = useSessionStore();
