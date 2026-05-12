@@ -17,8 +17,12 @@ header {
   gap: var(--spacing);
 }
 
-.logo {
+.logo-link {
   flex: 0 0 auto;
+  text-decoration: none;
+}
+
+.logo {
   display: flex;
   align-items: center;
   gap: 0.75rem;
@@ -29,29 +33,14 @@ header {
   }
 }
 
-.logo-part1 {
-  color: var(--light-text);
-  text-transform: uppercase;
-}
-
-.logo-part2 {
-  color: var(--accent);
-  text-transform: uppercase;
-}
-
-.logo-part3 {
+.logo-slogan {
   color: var(--accent2);
   margin: 0;
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 200;
   letter-spacing: 1px;
   text-transform: uppercase;
   line-height: 1;
-}
-
-.logo>div {
-  display: flex;
-  flex-direction: column;
 }
 
 nav {
@@ -64,31 +53,10 @@ nav {
   flex: 0 0 auto;
 }
 
-.auth-button button {
-  padding: 0.5rem 1rem;
-  border: 1px solid #ddd;
-  background: #fff;
-  color: #111;
-  cursor: pointer;
-  border-radius: 4px;
-  font-size: 1rem;
-  font-weight: 500;
-  transition: all 0.2s ease;
-}
-
-.auth-button button:hover {
-  background: #f5f5f5;
-  border-color: #999;
-}
-
-.auth-button button:active {
-  background: #e5e5e5;
-}
-
-/* Responsive - mobile first */
 @media (max-width: 480px) {
   header {
     gap: 0.5rem;
+    padding: var(--spacing);
   }
 
   .logo {
@@ -99,22 +67,12 @@ nav {
     height: 35px;
   }
 
-  .logo h1 {
-    font-size: 1.125rem;
-    margin: 0 0 0.15rem 0;
-  }
-
-  .logo-part3 {
+  .logo-slogan {
     font-size: 0.65rem;
     letter-spacing: 0.5px;
   }
 
   nav {
     flex: 0.5;
-  }
-
-  .auth-button button {
-    padding: 0.4rem 0.6rem;
-    font-size: 0.8rem;
   }
 }
