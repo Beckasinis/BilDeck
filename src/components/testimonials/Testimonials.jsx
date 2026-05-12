@@ -66,7 +66,7 @@ function Testimonials() {
     <section className="testimonials">
       <div className="testimonials-header">
         <h2 className="testimonials-title">
-          Vad säger de som <em>redan klarat teorin</em>?
+          Vad säger <em>våra användare</em>?
         </h2>
       </div>
       <div className="testimonials-grid">
