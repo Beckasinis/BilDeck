@@ -3,6 +3,7 @@ import useSessionStore from '../../stores/useSessionStore.js'
 import ScienceSection from '../../components/science/ScienceSection.jsx';
 import { Component } from 'react';
 import Hero from '../../components/hero/Hero';
+import HowToSection from '../../components/howto/HowToSection.jsx';
 
 class ErrorBoundary extends Component {
   state = { error: null };
@@ -23,6 +24,7 @@ function HomeView() {
       )}
       <Hero />
         <ScienceSection />
+        <HowToSection />
     </div>
   );
 }

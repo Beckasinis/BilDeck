@@ -8,24 +8,6 @@
   gap: clamp(2rem, 5vw, 4rem);
 }
 
-.science-heading {
-  font-family: 'Barlow', sans-serif;
-  font-size: clamp(1.75rem, 4vw, 2.75rem);
-  font-weight: 700;
-  color: var(--text);
-  text-align: center;
-  margin: 0;
-}
-
-.science-subheading {
-  font-family: 'Barlow', sans-serif;
-  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-  font-weight: 600;
-  color: var(--text);
-  margin: 0 0 1rem;
-  text-align: left;
-}
-
 .science-block {
   display: flex;
   flex-direction: column;
@@ -35,16 +17,23 @@
 .science-text {
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
+  gap: 1rem;
+
+  h3 {
+    margin-bottom: 0.2rem;
+    max-width: 22ch;
+  }
 
   p {
-    font-family: 'Outfit', sans-serif;
-    font-size: clamp(0.9rem, 1.5vw, 1rem);
-    line-height: 1.75;
-    color: var(--text);
-    margin: 0;
-    opacity: 0.85;
     text-align: left;
+    max-width: 65ch;
+    line-height: 1.75;
+    margin: 0;
+    opacity: 0.92;
+  }
+
+  strong {
+    font-weight: 600;
   }
 }
 
@@ -194,12 +183,10 @@
   padding: clamp(1.25rem, 3vw, 2rem);
   gap: clamp(1rem, 3vw, 1.5rem);
 
-
- @media (min-width: 768px) {
+  @media (min-width: 768px) {
     flex-direction: column;
   }
 }
-
 
 .science-meta-icon {
   font-size: clamp(1.5rem, 3vw, 2rem);

@@ -1,0 +1,163 @@
+.howto-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1.5px solid var(--accent);
+  padding: 5px 12px;
+  border-radius: 999px;
+  margin-bottom: 1.25rem;
+}
+
+.howto-tag::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+/* Headline */
+.howto-headline em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+/* Lead */
+.howto-lead {
+  opacity: 0.7;
+  max-width: 520px;
+  margin-bottom: 2.5rem;
+}
+
+/* Steps */
+.howto-steps {
+  display: flex;
+  flex-direction: column;
+}
+
+.howto-step {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 0 1.25rem;
+}
+
+.howto-step__left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.howto-step__num {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  border: 1.5px solid var(--text);
+  opacity: 0.3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Barlow', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.howto-step--active .howto-step__num {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  opacity: 1;
+}
+
+.howto-step__line {
+  width: 2px;
+  flex: 1;
+  min-height: 24px;
+  background: var(--text);
+  opacity: 0.1;
+  margin: 4px 0;
+}
+
+.howto-step__content {
+  padding-bottom: 2rem;
+  padding-top: 6px;
+}
+
+.howto-step--last .howto-step__content {
+  padding-bottom: 0;
+}
+
+.howto-step--active .howto-step__title {
+  color: var(--accent);
+}
+
+.howto-step__body {
+  opacity: 0.7;
+  margin-top: 6px;
+}
+
+.howto-step__body strong {
+  opacity: 1;
+  font-weight: 500;
+  color: var(--text);
+}
+
+/* Pills */
+.howto-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 999px;
+  margin: 0 2px;
+  vertical-align: middle;
+}
+
+.howto-pill--blue {
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
+  color: var(--accent);
+}
+
+.howto-pill--orange {
+  background: color-mix(in srgb, var(--accent2) 15%, transparent);
+  color: var(--accent2);
+}
+
+/* Callout */
+.howto-callout {
+  margin-top: 2rem;
+  border-radius: 16px;
+  padding: 1.25rem 1.5rem;
+  border: 2px solid var(--accent2);
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.howto-callout__icon {
+  font-size: 20px;
+  flex-shrink: 0;
+  margin-top: 1px;
+  color: var(--accent2);
+}
+
+.howto-callout__title {
+  margin-bottom: 4px;
+}
+
+.howto-callout__body {
+  opacity: 0.7;
+}
+
+.howto-callout__body strong {
+  opacity: 1;
+  font-weight: 500;
+  color: var(--text);
+}
