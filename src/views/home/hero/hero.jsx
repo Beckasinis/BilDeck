@@ -1,5 +1,6 @@
 import './hero.css';
 import useSessionStore from '../../../stores/useSessionStore';
+import Button from '../../../components/Button';
 
 function Hero() {
   const { user } = useSessionStore();
@@ -22,7 +23,7 @@ function Hero() {
             Redo att <em>trimma teorin</em>?
           </div>
           <div className="hero-actions">
-            <button className="btn-primary">Börja träna!</button>
+            <Button variant="primary">Börja träna!</Button>
           </div>
         </div>
       </section>
@@ -49,7 +50,7 @@ function Hero() {
           Flashcards med active recall — allt du behöver för att ta körkort på kortast möjliga tid.
         </p>
         <div className="hero-actions">
-          <button className="btn-primary">Hur fungerar det?</button>
+          <Button variant="primary">Hur fungerar det?</Button>
         </div>
       </div>
     </section>
