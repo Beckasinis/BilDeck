@@ -4,6 +4,7 @@ import ScienceSection from '../../components/science/ScienceSection.jsx';
 import { Component } from 'react';
 import Hero from '../../components/hero/Hero';
 import HowToSection from '../../components/howto/HowToSection.jsx';
+import Testimonials from '../../components/testimonials/Testimonials.jsx';
 
 class ErrorBoundary extends Component {
   state = { error: null };
@@ -19,12 +20,14 @@ function HomeView() {
 
   return (
     <div className="home-view">
-      {user && (
-        <h1>Välkommen, {user.user_metadata?.first_name}!</h1>
-      )}
       <Hero />
+      <Testimonials />
+      <ScienceSection />
+      <HowToSection />
+      <ErrorBoundary>
         <ScienceSection />
-        <HowToSection />
+      </ErrorBoundary>
+
     </div>
   );
 }

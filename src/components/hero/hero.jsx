@@ -16,7 +16,7 @@ function Hero() {
         </div>
         <div className="hero-content">
           <div className="hero-eyebrow">
-            Välkommen tillbaka, {firstName}!
+            Nu kör vi, {firstName}!
           </div>
           <h1 className="hero-title">
             Redo att <em>trimma teorin</em>?
@@ -50,7 +50,7 @@ function Hero() {
           Flashcards med active recall — allt du behöver för att ta körkort på kortast möjliga tid.
         </p>
         <div className="hero-actions">
-          <button className="btn-primary">Se hur det fungerar längre ner</button>
+          <button className="btn-primary">Hur fungerar det?</button>
         </div>
       </div>
     </section>
