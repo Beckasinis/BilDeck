@@ -75,3 +75,14 @@
   width: auto;
   height: 2rem;
 }
+
+.dropdown-close {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.5rem;
+
+  @media (min-width: 768px) {
+    display: none;
+}
+}
+
