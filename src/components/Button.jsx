@@ -10,7 +10,6 @@ import { useState } from "react";
  *   "primary"      – blue, solid (default)
  *   "secondary"    – orange, solid
  *   "outline"      – transparent, follows dark/light mode
- *   "outline_hero" – transparent, always light text (for dark hero sections)
  *
  * Props:
  *   variant   string   – one of the variants above, default "primary"
@@ -39,13 +38,13 @@ const buttonStyles = {
   },
   secondary: {
     background: "var(--accent2)",
-    color: "var(--dark-text)",  // ✅ fixad
+    color: "var(--dark-text)", 
     border: "none",
   },
   outline: {
     background: "transparent",
     color: "var(--text)",
-    border: "1.5px solid rgba(255, 255, 255, 0.6)",
+    border: "var(--border)",
   }
 };
 

@@ -35,6 +35,7 @@
   --spacing: 1rem;
   --spacing-lg: 1.5rem;
   --radius: 16px;
+  --border: 1.5px solid rgba(255, 255, 255, 0.6);
 
   /*Colors used throughout the  site, modes and themes*/
    --accent: #2278D4;
