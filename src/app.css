@@ -43,7 +43,9 @@
 
   /* Colors - light mode */
   --bg: #F7F9FC;
+  --surface: #E8EDF5;
   --text: #1A1E24;
+  
 
   /*hard coded non responsive to darkmode/light mode colors, use with care!*/
   --dark-text: #1A1E24;
@@ -54,13 +56,13 @@
   /*case specific colors*/
   --menu-link-text: #ffffff;
   --bg-hero: #0a0a0f;
-
 }
 
 /* Colors - dark mode */
 @media (prefers-color-scheme: dark) {
   :root {
     --bg: #12151A;
+    --surface: #1C2130;
     --text: #E6EAF0;
   }
 }
@@ -103,9 +105,16 @@ main {
   flex: 1;
   width: 100%;
   max-width: 1200px;
-  margin-inline: auto;
   display: flex;
   flex-direction: column;
+  margin-inline: auto;
+}
+
+.container {
+  width: 100%;
+  max-width: 800px;
+  margin-inline: auto;
+  padding-inline: var(--spacing-lg);
 }
  
 h1 {

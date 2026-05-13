@@ -2,7 +2,10 @@ import './home.css'
 import useSessionStore from '../../stores/useSessionStore.js'
 import { Component } from 'react';
 import Hero from './hero/hero.jsx';
-
+import Testimonials from './sections/testimonials/Testimonials.jsx';
+import HowToSection from './sections/howto/HowToSection.jsx';
+import ProductSection from './sections/product/ProductSection.jsx';
+import ScienceSection from './sections/science/ScienceSection.jsx';
 
 class ErrorBoundary extends Component {
   state = { error: null };
@@ -19,7 +22,14 @@ function HomeView() {
   return (
     <div className="home-view">
       <Hero />
-      
+      <Testimonials />
+      <div className='container'>
+        <HowToSection />
+      </div>
+      <ProductSection />
+      <div className='container'>
+        <ScienceSection />
+      </div>
     </div>
   );
 }
