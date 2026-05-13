@@ -207,7 +207,7 @@ Projektet planerades iterativt med en tydlig MVP som prioritet. Vi ville säkra 
 - **Loading-indikator** - En animerad laddningsindikator (bar eller bollar) istället för text
 
 ### Önskelista
-- **Blandade Lekar** - Val att blanda flera kattegorier och möjlig extra kategori för inloggade användare á "Mina svåraste kort"
+- **Blandade Lekar** - Val att blanda flera kategorier och möjlig extra kategori för inloggade användare á "Mina svåraste kort"
 - **Kategori färger** - Darkmode och lightmode färger för varje kategori, Supabase är förberedd för dessa. 
 - **Grafiklager** - Ett Grafik lager med z-index mellan kort och innehåll som blendas mot "kortet under" och ger vattenstämpel effekt som passar valda färger.
 - **Spara framsteg i Supabase** - Kortstatus (active/done) med tidstämpel sparas både i `localStorage` och i Supabase, så att framsteg synkas mellan enheter och sessioner
