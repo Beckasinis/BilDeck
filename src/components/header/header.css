@@ -40,7 +40,7 @@ header {
   color: var(--accent2);
   margin: 0;
   max-width: none;
-  font-size: 0.75rem;
+  font-size: 0.80rem;
   font-weight: 200;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -76,4 +76,12 @@ nav {
     font-size: 0.65rem;
     letter-spacing: 0.5px;
   }
+}
+
+.science-text p + p {
+  margin-top: 0.5rem;
+}
+
+-sience-space-top{
+  margin-top: 1rem;
 }

@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { useSearchParams } from 'react-router';
 import './deck.css';
-import Card from '../../components/card';
-import CompletionScreen from '../../components/completion';
+import Card from './card/Card';
+import CompletionScreen from './completion';
 import { getCards, getCategories } from '../../services/deckService';
 import useDeckStore from '../../stores/useDeckStore';
 
