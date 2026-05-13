@@ -1,5 +1,4 @@
 header {
-  --header-height: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -18,24 +17,29 @@ header {
 }
 
 .logo-link {
-  flex: 0 0 auto;
+  flex: 1 1 auto;
   text-decoration: none;
+  min-width: 0;
 }
 
 .logo {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  font-size: clamp(20px, 3vw, 28px);
+  line-height: 1.25;
 
   img {
     width: auto;
     height: 3rem;
+    flex-shrink: 0;
   }
 }
 
 .logo-slogan {
   color: var(--accent2);
   margin: 0;
+  max-width: none;
   font-size: 0.75rem;
   font-weight: 200;
   letter-spacing: 1px;
@@ -44,7 +48,7 @@ header {
 }
 
 nav {
-  flex: 1;
+  flex: 0 0 auto;
   display: flex;
   justify-content: center;
 }
@@ -61,6 +65,7 @@ nav {
 
   .logo {
     gap: 0.5rem;
+    font-size: clamp(14px, 4vw, 20px);
   }
 
   .logo img {
@@ -70,9 +75,5 @@ nav {
   .logo-slogan {
     font-size: 0.65rem;
     letter-spacing: 0.5px;
-  }
-
-  nav {
-    flex: 0.5;
   }
 }

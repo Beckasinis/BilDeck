@@ -32,7 +32,7 @@
 
 .btn--primary {
   background: var(--accent);
-  color: var(--dark-text);
+  color: var(--light-text);
 }
 
 .btn--secondary {
