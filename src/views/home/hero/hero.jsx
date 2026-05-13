@@ -1,5 +1,6 @@
 import './hero.css';
-import useSessionStore from '../../stores/useSessionStore';
+import useSessionStore from '../../../stores/useSessionStore';
+import Button from '../../../components/button';
 
 function Hero() {
   const { user } = useSessionStore();
@@ -10,19 +11,19 @@ function Hero() {
       <section className="hero hero--logged-in">
         <div className="hero-image">
           <picture>
-  <source media="(max-width: 699px) and (orientation: portrait)" srcSet="/img/hero_portrait2.png" />
-  <img src="/img/hero_landscape.png" alt="" />
+            <source media="(max-width: 699px) and (orientation: portrait)" srcSet="/img/hero_portrait2.png" />
+            <img src="/img/hero_landscape.png" alt="" />
           </picture>
         </div>
         <div className="hero-content">
           <div className="hero-eyebrow">
             Nu kör vi, {firstName}!
           </div>
-          <h1 className="hero-title">
+          <div className="hero-title">
             Redo att <em>trimma teorin</em>?
-          </h1>
+          </div>
           <div className="hero-actions">
-            <button className="btn-primary">Börja träna!</button>
+            <Button variant="primary">Börja träna!</Button>
           </div>
         </div>
       </section>
@@ -32,14 +33,13 @@ function Hero() {
   return (
     <section className="hero hero--logged-out">
       <div className="hero-image">
-       <picture>
-  <source media="(max-width: 688px) and (orientation: portrait)" srcSet="/img/hero_portrait2.png" />
-  <img src="/img/hero_landscape.png" alt="" />
-</picture>
+        <picture>
+          <source media="(max-width: 688px) and (orientation: portrait)" srcSet="/img/hero_portrait2.png" />
+          <img src="/img/hero_landscape.png" alt="" />
+        </picture>
       </div>
       <div className="hero-content">
         <div className="hero-eyebrow">
-          <span className="hero-eyebrow__line"></span>
           Körkortsteori som är rolig och fungerar
         </div>
         <h1 className="hero-title">
@@ -50,7 +50,7 @@ function Hero() {
           Flashcards med active recall — allt du behöver för att ta körkort på kortast möjliga tid.
         </p>
         <div className="hero-actions">
-          <button className="btn-primary">Hur fungerar det?</button>
+          <Button variant="primary">Hur fungerar det?</Button>
         </div>
       </div>
     </section>

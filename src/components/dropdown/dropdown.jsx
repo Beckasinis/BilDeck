@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router';
 import useCategoryStore from '../../stores/useCategoryStore';
 import './dropdown.css';
 import CategoryIcon from '../Icons/CategoryIcon';
+import Button from '../button';
 
 function Dropdown() {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,7 +15,6 @@ function Dropdown() {
     fetchIfNeeded();
   }, []);
 
-  // Stänger dropdown vid klick utanför - fungerar på alla skärmstorlekar
   useEffect(() => {
     function handleClickOutside(e) {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
@@ -34,14 +34,14 @@ function Dropdown() {
 
   return (
     <div className="dropdown" ref={dropdownRef}>
-      <button className="dropdown-button" onClick={toggleDropdown}>
+      <Button variant="secondary" onClick={toggleDropdown}>
         Flashcards
-      </button>
+      </Button>
 
       {isOpen && (
         <ul className="dropdown-menu">
           <li className="dropdown-close">
-            <button onClick={() => setIsOpen(false)}>✕</button>
+            <button className="dropdown-close__btn" onClick={() => setIsOpen(false)}>✕</button>
           </li>
           {categories.map((category) => (
             <li key={category.id}>

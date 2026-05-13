@@ -1,0 +1,21 @@
+.wordmark {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.wordmark__bil {
+  color: currentColor;
+}
+
+.wordmark__deck {
+  color: var(--accent);
+}
+
+.wordmark--light .wordmark__bil {
+  color: var(--light-text);
+}
+
+.wordmark--dark .wordmark__bil {
+  color: var(--dark-text);
+}

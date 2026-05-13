@@ -1,4 +1,4 @@
-import InfoIcon from '../icons/InfoIcon';
+import InfoIcon from '../../../components/icons/InfoIcon';
 import './info.css';
 
 export default function InfoModal({ info, isOpen, onClose }) {

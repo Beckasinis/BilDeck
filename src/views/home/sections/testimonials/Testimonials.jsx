@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { supabase } from '../../utils/supabase';
 import './testimonials.css';
 
 // Renders star rating based on rating prop, filled stars for rating value and empty stars for the rest up to 5
@@ -12,7 +11,9 @@ function StarRating({ rating }) {
     </div>
   );
 }
-// Renders a single testimonial card with name, age, review, rating and testimonial text, if img is provided renders it as avatar otherwise shows initials
+
+// Renders a single testimonial card with name, age, review, rating and testimonial text
+// If img is provided renders it as avatar, otherwise shows initials
 function TestimonialCard({ name, age, review, rating, testimonial, img }) {
   const initials = name.split(' ').map(w => w[0]).join('').slice(0, 2);
 
@@ -38,8 +39,10 @@ function TestimonialCard({ name, age, review, rating, testimonial, img }) {
     </article>
   );
 }
-// Renders testimonials section with 3 random testimonials from supabase, shows loading spinner while fetching and error message if fetch fails
-function Testimonials() {
+
+// Renders testimonials section with 3 random testimonials from supabase
+// Shows loading spinner while fetching and error message if fetch fails
+export default function Testimonials() {
   const [testimonials, setTestimonials] = useState([]);
   const [status, setStatus] = useState('loading');
 
@@ -62,6 +65,24 @@ function Testimonials() {
       .catch(() => setStatus('error'));
   }, []);
 
+  if (status === 'loading') {
+    return (
+      <section className="testimonials">
+        <div className="testimonials-loading">
+          <div className="testimonials-spinner" aria-label="Laddar omdömen" />
+        </div>
+      </section>
+    );
+  }
+
+  if (status === 'error') {
+    return (
+      <section className="testimonials">
+        <p className="testimonials-error">Kunde inte ladda omdömen just nu.</p>
+      </section>
+    );
+  }
+
   return (
     <section className="testimonials">
       <div className="testimonials-header">
@@ -77,5 +98,3 @@ function Testimonials() {
     </section>
   );
 }
-
-export default Testimonials;

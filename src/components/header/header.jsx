@@ -1,9 +1,11 @@
 import './header.css';
 import useModalStore from '../../stores/useModalStore';
 import useSessionStore from '../../stores/useSessionStore';
-import { Link } from 'react-router'
+import { Link } from 'react-router';
 import LoginModal from '../loginModal';
-import Dropdown from '../dropdown/Dropdown';
+import Dropdown from '../dropdown';
+import Wordmark from '../wordmark';
+import Button from '../button';
 
 /**
  * Header Component
@@ -11,42 +13,41 @@ import Dropdown from '../dropdown/Dropdown';
  */
 function Header() {
   const { isLoginModalOpen, openLoginModal, closeLoginModal } = useModalStore();
-  const { user, logout } = useSessionStore()
+  const { user, logout } = useSessionStore();
 
   return (
     <>
       <header>
-        <a href="/" style={{ textDecoration: 'none', cursor: 'pointer' }}>
+        <Link to="/" className="logo-link">
           <div className="logo">
             <img src="/img/apple-touch-icon.png" alt="logo BilDeck" />
             <div>
-              <h1>
-                <span className="logo-part1">Bil</span>
-                <span className="logo-part2">Deck</span>
-              </h1>
-              <p className="logo-part3">Trimma Teorin</p>
+              <Wordmark colorScheme="light" />
+              <p className="logo-slogan">Trimma Teorin</p>
             </div>
           </div>
-        </a>
+        </Link>
+
         <nav>
           <Dropdown />
         </nav>
 
         <div className="auth-button">
           {user ? (
-            <button onClick={logout}>Logga ut</button>
+            <Button variant="primary" onClick={logout}>Logga ut</Button>
           ) : (
-            <button onClick={openLoginModal}>Login</button>
+            <Button variant="primary" onClick={openLoginModal}>Login</Button>
           )}
         </div>
       </header>
-      {
-        isLoginModalOpen && (
-          <LoginModal onClose={closeLoginModal} description="Logga in för att spara dina resultat." />
-        )
-      }
-    </>
 
+      {isLoginModalOpen && (
+        <LoginModal
+          onClose={closeLoginModal}
+          description="Logga in för att spara dina resultat."
+        />
+      )}
+    </>
   );
 }
 
