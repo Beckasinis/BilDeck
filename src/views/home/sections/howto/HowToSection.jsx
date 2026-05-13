@@ -1,4 +1,5 @@
 import './howto.css';
+import Wordmark from '../../../../components/wordmark';
 
 const steps = [
   {
@@ -17,10 +18,10 @@ const steps = [
     body: (
       <>
         Svaret kom direkt, utan tvekan? →{' '}
-        <span className="howto-pill howto-pill--blue">Klar</span>
+        <span className="pill pill--blue">Klar</span>
         <br />
         Osäker, glömde en detalj, tvekade? →{' '}
-        <span className="howto-pill howto-pill--orange">Aktiva högen</span>
+        <span className="pill pill--orange">Aktiva högen</span>
         <br />
         Fuska inte med dig själv — det är bara du som förlorar på det.
       </>
@@ -62,51 +63,51 @@ const steps = [
   },
 ];
 
-function HowToSection() {
+export default function HowToSection() {
   return (
     <section className="howto">
-      <span className="howto-tag">Active recall</span>
+      <span className="tag">Active recall</span>
 
-      <h2 className="howto-headline">
+      <h2 className="headline">
         Så här lär du dig<br />
         så att det <em>faktiskt sitter</em>
       </h2>
 
-      <p className="howto-lead">
-        BilDeck är inte en vanlig pluggapp. Varje kort tvingar dig att minnas — inte bara känna
+      <p className="lead">
+        <Wordmark /> är inte en vanlig pluggapp. Varje kort tvingar dig att minnas — inte bara känna
         igen. Det är skillnaden mellan att plugga kvällen innan och att faktiskt kunna det på
         provet.
       </p>
 
-      <div className="howto-steps">
+      <div className="steps">
         {steps.map((step) => (
           <div
             key={step.number}
             className={[
-              'howto-step',
-              step.active ? 'howto-step--active' : '',
-              step.last ? 'howto-step--last' : '',
+              'step',
+              step.active ? 'step--active' : '',
+              step.last ? 'step--last' : '',
             ]
               .filter(Boolean)
               .join(' ')}
           >
-            <div className="howto-step__left">
-              <div className="howto-step__num">{step.number}</div>
-              {!step.last && <div className="howto-step__line" />}
+            <div className="left">
+              <div className="num">{step.number}</div>
+              {!step.last && <div className="line" />}
             </div>
-            <div className="howto-step__content">
-              <h4 className="howto-step__title">{step.title}</h4>
-              <p className="howto-step__body">{step.body}</p>
+            <div className="content">
+              <h4 className="title">{step.title}</h4>
+              <p className="body">{step.body}</p>
             </div>
           </div>
         ))}
       </div>
 
-      <div className="howto-callout">
-        <span className="howto-callout__icon">⚠</span>
+      <div className="callout">
+        <span className="icon">⚠</span>
         <div>
-          <p className="howto-callout__title">Att klara en lek ≠ att du är klar</p>
-          <p className="howto-callout__body">
+          <p className="title">Att klara en lek ≠ att du är klar</p>
+          <p className="body">
             Många tror att det räcker att gå igenom korten en gång utan misstag. Men minnet bleknar
             snabbt. <strong>Fortsätt repetera</strong> tills provdagen — det är det som faktiskt
             håller.
@@ -116,5 +117,3 @@ function HowToSection() {
     </section>
   );
 }
-
-export default HowToSection;
