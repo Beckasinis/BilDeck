@@ -12,9 +12,9 @@ function StarRating({ rating }) {
   );
 }
 
-// Renders a single testimonial card with name, age, review, rating and testimonial text
+// Renders a single testimonial card with name, age, rating and testimonial text
 // If img is provided renders it as avatar, otherwise shows initials
-function TestimonialCard({ name, age, review, rating, testimonial, img }) {
+function TestimonialCard({ name, age, rating, testimonial, img }) {
   const initials = name.split(' ').map(w => w[0]).join('').slice(0, 2);
 
   return (
@@ -32,7 +32,7 @@ function TestimonialCard({ name, age, review, rating, testimonial, img }) {
         )}
         <div className="testimonial-meta">
           <span className="testimonial-name">{name}</span>
-          <span className="testimonial-passed">{review} · {age} år</span>
+          <span className="testimonial-passed">{age} år</span>
         </div>
         <StarRating rating={rating} />
       </div>

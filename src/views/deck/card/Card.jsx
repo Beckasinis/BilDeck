@@ -53,7 +53,7 @@ const Card = forwardRef(function Card({ question, answer, info, icon, colorLight
       >
         <section className="question-side" style={{ backgroundColor: color }}>
           <span className="card-label">FRÅGA</span>
-          
+
           {/* TODO: refactor to switch when more display_types are added */}
           {/* SVG cards render raw SVG markup from the question field.
               The static label gets its own ref for text scaling.
@@ -68,8 +68,8 @@ const Card = forwardRef(function Card({ question, answer, info, icon, colorLight
             </>
           ) : (
             <>
-            <CategoryIcon icon={icon} />
-            <p ref={questionRef}>{question}</p>
+              <CategoryIcon icon={icon} />
+              <p ref={questionRef}>{question}</p>
             </>
           )}
         </section>
@@ -99,7 +99,7 @@ function useFitText(ref, text) {
     if (!p) return;
 
     function fit() {
-      let size = 48;
+      let size = 32;
       p.style.fontSize = `${size}px`;
 
       while (
