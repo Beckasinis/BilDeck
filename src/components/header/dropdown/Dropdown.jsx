@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router';
 import useCategoryStore from '../../../stores/useCategoryStore';
 import './dropdown.css';
-import CategoryIcon from '../../Icons/CategoryIcon';
+import CategoryIcon from '../../icons/CategoryIcon';
 import Button from '../../button/Button';
 
 function Dropdown() {
