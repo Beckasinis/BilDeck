@@ -4,10 +4,9 @@ import { persist } from 'zustand/middleware';
 const useDeckStore = create(
   persist(
     (set, get) => ({
-      // Ordered active queue - hålls bara i minnet, byggs om från progress vid sidladdning
-      // Todo: synkronisera progress till Supabase
+      // Ordered active queue - kept in memory only, rebuilt from progress on page load
       queue: {},
-      // Kortprogress - sparas i localStorage
+      // Card progress - saved in localStorage
       // {
       //   [categoryId]: {
       //     [cardId]: { status: 'active' | 'done', updatedAt: timestamp }
@@ -15,12 +14,9 @@ const useDeckStore = create(
       // }
       progress: {},
 
-      // Initialiserar kort för en kategori med hänsyn till redan sparad progress
-      // Blandar kön slumpmässigt vid varje ny session
       setCards: (cards, categoryId) => set((state) => {
         const existing = state.progress[categoryId] || {};
 
-        // Bygg progress med befintlig status om den finns, annars sätt 'active'
         const updatedProgress = {};
         cards.forEach((card) => {
           updatedProgress[card.id] = existing[card.id] || {
@@ -29,7 +25,7 @@ const useDeckStore = create(
           };
         });
 
-        // Bygg kö från kort som inte är klara, i slumpad ordning
+        // Build queue from cards that are not finished, in randomized order
         const activeQueue = cards
           .map(c => c.id)
           .filter(id => updatedProgress[id].status === 'active')
@@ -47,12 +43,11 @@ const useDeckStore = create(
         };
       }),
 
-      // Flyttar ett kort till 'done' eller lägger tillbaka det sist i aktiv kö
+      // Moves a card to 'done' or places it back at the end of the active queue
       moveCard: (cardId, target, categoryId) =>
         set((state) => {
           const currentQueue = state.queue[categoryId] || [];
 
-          // Uppdatera progress med ny status och tidsstämpel
           const updatedProgress = {
             ...state.progress[categoryId],
             [cardId]: {
@@ -61,7 +56,6 @@ const useDeckStore = create(
             }
           };
 
-          // Ta bort kortet från nuvarande position, lägg sist om det fortfarande är aktivt
           const filteredQueue = currentQueue.filter(id => id !== cardId);
           const updatedQueue = target === 'active'
             ? [...filteredQueue, cardId]
@@ -79,12 +73,10 @@ const useDeckStore = create(
           };
         }),
 
-      // Returnerar aktiva kort-ID:n i köordning för en kategori
       getActive: (categoryId) => {
         return get().queue[categoryId] || [];
       },
 
-      // Returnerar klara kort-ID:n för en kategori
       getDone: (categoryId) => {
         const category = get().progress[categoryId] || {};
         return Object.entries(category)
@@ -92,12 +84,10 @@ const useDeckStore = create(
           .map(([id]) => id);
       },
 
-      // Återställer alla kort till 'active' för en kategori - triggas när spelaren klarar hela leken
-      // eller via "Starta om"-knappen. Blandar kön slumpmässigt vid återstart.
       resetDeck: (categoryId) => set((state) => {
         const category = state.progress[categoryId] || {};
 
-        // Sätt alla kort till 'active' med ny tidsstämpel
+     
         const resetProgress = {};
         Object.keys(category).forEach(cardId => {
           resetProgress[cardId] = { status: 'active', updatedAt: Date.now() };
@@ -117,7 +107,6 @@ const useDeckStore = create(
     }),
     {
       name: 'deck-progress',
-      // Spara bara progress till localStorage, inte kön (den byggs om vid sidladdning)
       partialize: (state) => ({ progress: state.progress }),
     }
   )

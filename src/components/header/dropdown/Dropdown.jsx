@@ -4,6 +4,7 @@ import useCategoryStore from '../../../stores/useCategoryStore';
 import './dropdown.css';
 import CategoryIcon from '../../icons/CategoryIcon';
 import Button from '../../button/Button';
+import { toSlug } from '../../../utils/slug';
 
 function Dropdown() {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,8 +28,8 @@ function Dropdown() {
 
   const toggleDropdown = () => setIsOpen(prev => !prev);
 
-  const handleCategorySelect = (categoryId) => {
-    navigate(`/deck?subject=${categoryId}`);
+  const handleCategorySelect = (category) => {
+    navigate(`/deck/${toSlug(category.name)}`, { state: { categoryId: category.id } });
     setIsOpen(false);
   };
 
@@ -47,7 +48,7 @@ function Dropdown() {
             <li key={category.id}>
               <button
                 className="dropdown-item"
-                onClick={() => handleCategorySelect(category.id)}
+                onClick={() => handleCategorySelect(category)}
               >
                 <CategoryIcon icon={category.icon} />
                 {category.name}

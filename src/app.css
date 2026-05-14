@@ -87,11 +87,11 @@ body {
   color: var(--text);
 }
 
-/*All brödtext*/
+/* text content */
 p {
   font-size: clamp(15px, 1.5vw, 17px);
   line-height: 1.625;
-  max-width: 65ch; /* håller radlängden läsbar */
+  max-width: 65ch; 
 }
 
 /* #root = React-div */

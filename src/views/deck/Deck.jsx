@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { useSearchParams } from 'react-router';
+import { useParams, useLocation } from 'react-router';
 import './deck.css';
 import Card from './card/Card';
 import CompletionScreen from './completion/CompletionScreen';
@@ -7,15 +7,18 @@ import { getCards, getCategories } from '../../services/deckService';
 import useDeckStore from '../../stores/useDeckStore';
 
 export default function DeckView() {
+  const { subject } = useParams();
+  const location = useLocation();
+  const selectedCategoryId = location.state?.categoryId ?? null;
+
   const [cards, setCards] = useState([]);
   const [categories, setCategories] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [searchParams] = useSearchParams();
-  const selectedCategoryId = searchParams.get('subject');
-  const cardRef = useRef(null);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [lastReceived, setLastReceived] = useState(null);
   const [fetchError, setFetchError] = useState(null);
+
+  const cardRef = useRef(null);
   const { setCards: setStoreCards, moveCard, getActive, getDone, resetDeck } = useDeckStore();
 
   const cardsRef = useRef(cards);
@@ -84,6 +87,7 @@ export default function DeckView() {
     };
   }, []);
 
+  // Fetch cards and categories once on mount
   useEffect(() => {
     async function fetchData() {
       setIsLoading(true);
@@ -92,18 +96,8 @@ export default function DeckView() {
           getCards(),
           getCategories()
         ]);
-        
         setCards(fetchedCards);
         setCategories(fetchedCategories);
-
-        const categorySpecificCards = fetchedCards.filter(c => c.category_id === selectedCategoryId);
-        setStoreCards(categorySpecificCards, selectedCategoryId);
-
-        const currentActive = getActive(selectedCategoryId);
-        if (categorySpecificCards.length > 0 && currentActive.length === 0) {
-          resetDeck(selectedCategoryId);
-        }
-
       } catch (err) {
         setFetchError('Kunde inte hämta korten. Försök igen senare.');
       } finally {
@@ -111,7 +105,20 @@ export default function DeckView() {
       }
     }
     fetchData();
-  }, [selectedCategoryId]);
+  }, []);
+
+  // Once we have both cards and the resolved category ID, initialise the deck store
+  useEffect(() => {
+    if (!selectedCategoryId || cards.length === 0) return;
+
+    const categorySpecificCards = cards.filter(c => c.category_id === selectedCategoryId);
+    setStoreCards(categorySpecificCards, selectedCategoryId);
+
+    const currentActive = getActive(selectedCategoryId);
+    if (categorySpecificCards.length > 0 && currentActive.length === 0) {
+      resetDeck(selectedCategoryId);
+    }
+  }, [selectedCategoryId, cards]);
 
   const activeIds = getActive(selectedCategoryId);
   const doneIds = getDone(selectedCategoryId);
@@ -120,7 +127,9 @@ export default function DeckView() {
     .filter(Boolean);
 
   const currentCard = categoryCards[0];
-  const currentCategory = categories.find(c => c.id === (currentCard?.category_id || selectedCategoryId));
+  const currentCategory = categories.find(
+    c => c.id === (currentCard?.category_id ?? selectedCategoryId)
+  );
 
   if (fetchError) return <p className="error-message">{fetchError}</p>;
   if (isLoading) return <div className="deck-view"><p>Laddar kort...</p></div>;

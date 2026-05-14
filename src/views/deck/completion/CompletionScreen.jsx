@@ -1,8 +1,15 @@
-import { Link } from 'react-router';
+import { useNavigate } from 'react-router';
 import './completion.css';
 import CategoryIcon from '../../../components/icons/CategoryIcon';
+import { toSlug } from '../../../utils/slug';
 
 export default function CompletionScreen({ categories, onReset, currentCategoryId }) {
+  const navigate = useNavigate();
+
+  const handleCategorySelect = (cat) => {
+    navigate(`/deck/${toSlug(cat.name)}`, { state: { categoryId: cat.id } });
+  };
+
   return (
     <div className="completion-screen">
       <div className="confetti-container">
@@ -32,14 +39,14 @@ export default function CompletionScreen({ categories, onReset, currentCategoryI
           {categories
             .filter((cat) => cat.id !== currentCategoryId)
             .map((cat) => (
-              <Link
+              <button
                 key={cat.id}
-                to={`/deck?subject=${cat.id}`}
                 className="completion-category-link"
+                onClick={() => handleCategorySelect(cat)}
               >
-                <CategoryIcon icon={cat.icon} /> 
+                <CategoryIcon icon={cat.icon} />
                 {cat.name}
-              </Link>
+              </button>
             ))}
         </div>
       </div>
