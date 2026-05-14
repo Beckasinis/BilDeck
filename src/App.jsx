@@ -13,7 +13,7 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<HomeView />} />
-          <Route path="/deck" element={<DeckView />} />
+          <Route path="/deck/:subject" element={<DeckView />} />
           <Route path="/signup" element={<SignUpView />} />
           <Route path="*" element={<NotFoundView />} />
         </Routes>

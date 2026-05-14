@@ -46,6 +46,7 @@
       min-width: 10rem; 
 
       .completion-category-link {
+        cursor: pointer;
         width: 100%;
         padding: 0.5rem 1rem;
         border-radius: 8px;
@@ -53,6 +54,7 @@
         text-decoration: none;
         font-size: 0.9rem;
         text-align: left;
+        color: var(--text);
       }
     }
 
@@ -60,14 +62,7 @@
       width: auto;
       height: 1rem;
     }
-
-      .completion-category-link {
-        padding: 0.5rem 1rem;
-        border-radius: 8px;
-        border: 1px solid #ccc;
-        text-decoration: none;
-        font-size: 0.9rem;
-      }
+   
     }
   }
 

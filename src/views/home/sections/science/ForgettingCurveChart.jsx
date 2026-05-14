@@ -126,7 +126,6 @@ export default function ForgettingCurveChart() {
         <canvas
           ref={canvasRef}
           role="img"
-          aria-label="Forgetting curve: utan repetition sjunker minnet till 33% efter dag 1. Med spaced repetition hålls minnet högt genom återkallning vid dag 1, 3, 7 och 14."
         >
           Utan repetition: exponentiellt fall mot 0%. Med spaced repetition hålls minnet högt.
         </canvas>

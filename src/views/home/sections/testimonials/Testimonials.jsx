@@ -4,7 +4,7 @@ import './testimonials.css';
 // Renders star rating based on rating prop, filled stars for rating value and empty stars for the rest up to 5
 function StarRating({ rating }) {
   return (
-    <div className="testimonial-stars" aria-label={`${rating} av 5 stjärnor`}>
+    <div className="testimonial-stars">
       {Array.from({ length: 5 }, (_, i) => (
         <span key={i} className={i < rating ? 'star star--filled' : 'star'}>★</span>
       ))}
@@ -69,7 +69,7 @@ export default function Testimonials() {
     return (
       <section className="testimonials">
         <div className="testimonials-loading">
-          <div className="testimonials-spinner" aria-label="Laddar omdömen" />
+          <div className="testimonials-spinner"/>
         </div>
       </section>
     );

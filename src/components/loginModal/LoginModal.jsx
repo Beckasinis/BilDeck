@@ -95,7 +95,7 @@ function LoginModal({ onClose, description }) {
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content" onClick={e => e.stopPropagation()}>
-        <button className="modal-close" onClick={onClose} aria-label="Stäng">✕</button>
+        <button className="modal-close" onClick={onClose}>✕</button>
         {description && <p className="modal-description">{description}</p>}
 
         {error && <p className="error-message">{error}</p>}

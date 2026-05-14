@@ -4,7 +4,7 @@ En flashcard-app för körkortsteori byggd med **active recall**-metodik. Använ
 
 ## Collaborators
 
-- **Annelie Johansson Rova** - Spellogik och kortfunktion, mappstruktur, designsystem, ikoner, HomeView-sektioner, SQL-input, databasstruktur.
+- **Annelie Johansson Rova** - Spellogik och kortfunktion, mappstruktur, designsystem, ikoner, HomeView-sektioner, databasstruktur i Supabase.
 - **Rebecca Martis** - Kortinnehåll och kunskapsbas (NotebookLM), Supabase-databas och API, Hero, Dropdown, Testimonials, Login/Sign-up, deployment.
 
 ---
