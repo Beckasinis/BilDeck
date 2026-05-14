@@ -22,6 +22,8 @@
   }
 }
 
+
+
 .deck-done {
   grid-area: done;
   display: flex;
@@ -49,6 +51,7 @@
     justify-content: flex-end;
   }
 }
+
 
 .deck-info {
   display: flex;

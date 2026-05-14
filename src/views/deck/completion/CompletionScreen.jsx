@@ -2,8 +2,7 @@ import { Link } from 'react-router';
 import './completion.css';
 import CategoryIcon from '../../../components/icons/CategoryIcon';
 
-  // TODO: add offline category caching to Zustand so categories are available without network
-export default function CompletionScreen({ categories, onReset }) {
+export default function CompletionScreen({ categories, onReset, currentCategoryId }) {
   return (
     <div className="completion-screen">
       <div className="confetti-container">
@@ -25,22 +24,23 @@ export default function CompletionScreen({ categories, onReset }) {
 
       <div className="completion-actions">
         <button className="completion-button primary" onClick={onReset}>
-          🔄 Starta Om
+          🔄 Starta Om Leken
         </button>
 
         <div className="completion-categories">
           <p>Välj en annan kategori:</p>
-          {/* TODO: ersätt med cachade kategorier från Zustand för offline-stöd */}
-          {categories.map((cat) => (
-            <Link
-              key={cat.id}
-              to={`/deck?subject=${cat.id}`}
-              className="completion-category-link"
-            >
-              <CategoryIcon icon={cat.icon} /> 
-              {cat.name}
-            </Link>
-          ))}
+          {categories
+            .filter((cat) => cat.id !== currentCategoryId)
+            .map((cat) => (
+              <Link
+                key={cat.id}
+                to={`/deck?subject=${cat.id}`}
+                className="completion-category-link"
+              >
+                <CategoryIcon icon={cat.icon} /> 
+                {cat.name}
+              </Link>
+            ))}
         </div>
       </div>
     </div>
