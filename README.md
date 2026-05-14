@@ -17,13 +17,13 @@ En flashcard-app för körkortsteori byggd med **active recall**-metodik. Använ
 
 ## 📸 Screenshots
 
-| Hero (mobil) | Kortvy (desktop) |
+| Hero (mobil) | Merchandise |
 |---|---|
-| ![Hero mobile](screenshot-hero-mobile.png) | ![Deck desktop](screenshot-deck-desktop.png) |
+| ![Hero mobile](public/img/skarmbild_mobile.png) | ![Merchandise](public/img/screenshot-merchandise.png) |
 
-| Kortvy (mobil) | Merchandise |
+| Kortvy (mobil) | Kortvy (desktop) |
 |---|---|
-| ![Deck mobile](screenshot-deck-mobile.png) | ![Merchandise](screenshot-merchandise.png) |
+| ![Deck mobile](public/img/screenshot-deck-mobile.png) | ![Deck desktop](public/img/screenshot-deck-desktop.png) |
 
 ---
 
