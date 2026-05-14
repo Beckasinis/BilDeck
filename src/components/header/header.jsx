@@ -2,10 +2,8 @@ import './header.css';
 import useModalStore from '../../stores/useModalStore';
 import useSessionStore from '../../stores/useSessionStore';
 import { Link } from 'react-router';
-import LoginModal from '../loginModal';
-import Dropdown from '../dropdown';
-import Wordmark from '../wordmark';
-import Button from '../button';
+import LoginModal from '../loginModal/LoginModal';
+import { Dropdown, Button, Wordmark } from '../index';
 
 /**
  * Header Component

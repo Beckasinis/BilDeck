@@ -1,5 +1,5 @@
 import './howto.css';
-import Wordmark from '../../../../components/wordmark';
+import { Wordmark } from '../../../../components';
 
 const steps = [
   {

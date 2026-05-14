@@ -1,6 +1,5 @@
 import "./product.css";
-import Wordmark from "../../../../components/wordmark";
-import Button from "../../../../components/button";
+import { Wordmark, Button } from '../../../../components';
 
 export default function ProductSection() {
   return (

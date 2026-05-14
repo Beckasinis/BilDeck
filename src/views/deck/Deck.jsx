@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useSearchParams } from 'react-router';
 import './deck.css';
 import Card from './card/Card';
-import CompletionScreen from './completion';
+import CompletionScreen from './completion/CompletionScreen';
 import { getCards, getCategories } from '../../services/deckService';
 import useDeckStore from '../../stores/useDeckStore';
 
