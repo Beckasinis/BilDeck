@@ -127,11 +127,8 @@
   color: var(--accent);
 }
 
-.hero-eyebrow__line {
-  display: inline-block;
-  width: 24px;
-  height: 2px;
-  background: var(--accent);
+.loggedin {
+  font-size: 20px;
 }
 
 .hero-title {

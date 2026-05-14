@@ -205,15 +205,16 @@ Projektet planerades iterativt med en tydlig MVP som prioritet. Vi ville säkra 
 ### Nästa steg (planerat men hann inte med)
 - **Alt-texter** - Bilder saknar ännu korrekta alt-texter för tillgänglighet
 - **Loading-indikator** - En animerad laddningsindikator (bar eller bollar) istället för text
+- **Senaste kort** - Ta tillbaka det senaste kortet man skickat till en hög
 
 ### Önskelista
 - **Blandade Lekar** - Val att blanda flera kategorier och möjlig extra kategori för inloggade användare á "Mina svåraste kort"
 - **Kategori färger** - Darkmode och lightmode färger för varje kategori, Supabase är förberedd för dessa. 
-- **Grafiklager** - Ett Grafik lager med z-index mellan kort och innehåll som blendas mot "kortet under" och ger vattenstämpel effekt som passar valda färger.
+- **Grafiklager** - Ett Grafik lager med z-index mellan kort och innehåll som blandas mot "kortet under" och ger vattenstämpel effekt som passar valda färger.
 - **Spara framsteg i Supabase** - Kortstatus (active/done) med tidstämpel sparas både i `localStorage` och i Supabase, så att framsteg synkas mellan enheter och sessioner
 - **Offline-stöd** — Verifiera att kort, SVG och spellogik fungerar utan nätverksanslutning; synka när anslutningen återkommer
 - **Inloggningspåminnelse** - Modal med "Logga in om du vill spara dina framsteg" och kryssrutan "Visa inte igen"
 - **Återuppta spel** - Inloggad användare erbjuds att fortsätta senaste påbörjade kortlek
 - **Dark mode-toggle** - Manuell växling som komplement till systeminställningen
 - **PWA** - Installationsbart som app på mobil; avvaktar tills ekosystemet är kompatibelt med Vite 8 och React 19
-- **FramerMotion** - Annimerade kort som flyttar sig över skärmen
+- **FramerMotion** - Animerade kort som flyttar sig över skärmen

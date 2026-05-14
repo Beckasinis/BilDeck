@@ -16,7 +16,7 @@ function Hero() {
           </picture>
         </div>
         <div className="hero-content">
-          <div className="hero-eyebrow">
+          <div className="hero-eyebrow loggedin">
             Nu kör vi, {firstName}!
           </div>
           <div className="hero-title">
