@@ -80,7 +80,7 @@ Projektet är byggt av ett tvåpersonersteam som skoluppgift i kursen JavaScript
 
 1. Klona repot:
    ```bash
-   git clone https://github.com/ANVÄNDARNAMN/bildeck.git
+   git clone https://github.com/beckasinis/bildeck.git
    cd bildeck
    ```
 
@@ -181,6 +181,16 @@ bildeck/
 ## 🧠 Tekniska val och utmaningar
 
 **Kortinnehåll via NotebookLM** - Kortdatan bygger på aktuell information från flera officiella källor, sammanställd i NotebookLM till en ren kunskapsbas. Därifrån genererades frågor och svar som sedan importerades till Supabase. Upplägget säkerställer att innehållet är korrekt och konsekvent, och att testdata enkelt kunde bytas ut mot produktionsklart material när spellogiken var på plats.
+#### Källor:
+_Körkortsförordning (1998:980)_ - Innehåller detaljerade föreskrifter om förarbehörighet, utfärdande och giltighet av körkort samt regler för övningskörning och handledarskap.
+_Vägmärkesförordning (2007:90)_ - Reglerar alla typer av vägmärken, trafiksignaler, vägmarkeringar och andra anordningar för anvisningar i trafiken.
+_Trafikförordning (1998:1276)_ - Den centrala förordningen som innehåller trafikregler för alla trafikanter, bestämmelser om hastighet, väjningsplikt, stannande och parkering.
+_Fordonslag (2002:574)_ - Innehåller lagbestämmelser om kontroll av fordon, typgodkännande, besiktningar och flygande inspektioner.
+_Körkortslag (1998:488)_ - Fastställer de grundläggande lagkraven för behörighet att köra motordrivna fordon, medicinska krav och regler för körkortsingripande.
+_Fordonsförordning (2009:211)_ - Preciserar reglerna kring fordons beskaffenhet, utrustning och de tekniska kraven för att ett fordon ska få användas i trafik.
+_Lag (1951:649) om straff för vissa trafikbrott_ - Definierar brottsliga handlingar i trafiken såsom vårdslöshet, rattfylleri, olovlig körning och smitning samt deras påföljder.
+_Vägmärken i Sverige (Wikipedia)_ - Ger en historisk kontext och beskrivningar av utformningen och kategoriseringen av svenska trafikskyltar.
+_Transportstyrelsens föreskrifter om kursplan, behörighet B (TSFS 2011:20)_ - Anger målen för förarutbildningen och de kunskaper som krävs för att få körkort för personbil.
 
 **Zustand med `persist`-middleware** - Kortprogress sparas i `localStorage` automatiskt via Zustand. Kön (ordningen på korten) persisteras däremot inte, den byggs om och slumpas om vid varje sidladdning för att ge variation och hindra memorisering av kortordning.
 
