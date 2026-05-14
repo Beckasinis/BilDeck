@@ -3,7 +3,7 @@ import './card.css';
 import CategoryIcon from '../../../components/icons/CategoryIcon';
 import DOMPurify from 'dompurify';
 import InfoIcon from '../../../components/icons/InfoIcon';
-import InfoModal from '../infoModal';
+import InfoModal from "../infoModal/InfoModal";
 
 const Card = forwardRef(function Card({ question, answer, info, icon, colorLight, colorDark, onFlip, displayType }, ref) {
   const [isFlipped, setIsFlipped] = useState(false);

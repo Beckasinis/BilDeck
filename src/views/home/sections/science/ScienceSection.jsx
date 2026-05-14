@@ -1,7 +1,7 @@
 import './science.css';
 import ForgettingCurveChart from './ForgettingCurveChart';
 import RetentionCards from './RetentionCards';
-import Wordmark from '../../../../components/wordmark';
+import { Wordmark } from '../../../../components';
 
 export default function ScienceSection() {
   return (

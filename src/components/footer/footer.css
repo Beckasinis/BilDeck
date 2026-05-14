@@ -1,7 +1,14 @@
 footer {
   padding: var(--spacing);
-  text-align: center;
-  font-size: 0.1rem;
-  color: var(--light-text);
-  background: var(--dark-bg);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  p{
+    font-size: 0.75rem;
+    margin: 0; 
+    opacity: 0.8;
+  }
 }
+

@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router';
-import useCategoryStore from '../../stores/useCategoryStore';
+import useCategoryStore from '../../../stores/useCategoryStore';
 import './dropdown.css';
-import CategoryIcon from '../Icons/CategoryIcon';
-import Button from '../button';
+import CategoryIcon from '../../Icons/CategoryIcon';
+import Button from '../../button/Button';
 
 function Dropdown() {
   const [isOpen, setIsOpen] = useState(false);

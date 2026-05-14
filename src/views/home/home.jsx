@@ -1,7 +1,7 @@
 import './home.css'
 import useSessionStore from '../../stores/useSessionStore.js'
 import { Component } from 'react';
-import Hero from './hero/hero.jsx';
+import Hero from './hero/Hero.jsx';
 import Testimonials from './sections/testimonials/Testimonials.jsx';
 import HowToSection from './sections/howto/HowToSection.jsx';
 import ProductSection from './sections/product/ProductSection.jsx';

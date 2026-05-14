@@ -1,5 +1,5 @@
 import './howto.css';
-import Wordmark from '../../../../components/wordmark';
+import { Wordmark } from '../../../../components';
 
 const steps = [
   {
@@ -106,7 +106,7 @@ export default function HowToSection() {
       <div className="callout">
         <span className="icon">⚠</span>
         <div>
-          <p className="title">Att klara en lek ≠ att du är klar</p>
+          <p className="title">Att klara en lek betyder inte att du är klar</p>
           <p className="body">
             Många tror att det räcker att gå igenom korten en gång utan misstag. Men minnet bleknar
             snabbt. <strong>Fortsätt repetera</strong> tills provdagen — det är det som faktiskt
