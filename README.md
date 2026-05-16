@@ -181,16 +181,6 @@ bildeck/
 ## 🧠 Tekniska val och utmaningar
 
 **Kortinnehåll via NotebookLM** - Kortdatan bygger på aktuell information från flera officiella källor, sammanställd i NotebookLM till en ren kunskapsbas. Därifrån genererades frågor och svar som sedan importerades till Supabase. Upplägget säkerställer att innehållet är korrekt och konsekvent, och att testdata enkelt kunde bytas ut mot produktionsklart material när spellogiken var på plats.
-#### Källor:
-_Körkortsförordning (1998:980)_ - Innehåller detaljerade föreskrifter om förarbehörighet, utfärdande och giltighet av körkort samt regler för övningskörning och handledarskap.
-_Vägmärkesförordning (2007:90)_ - Reglerar alla typer av vägmärken, trafiksignaler, vägmarkeringar och andra anordningar för anvisningar i trafiken.
-_Trafikförordning (1998:1276)_ - Den centrala förordningen som innehåller trafikregler för alla trafikanter, bestämmelser om hastighet, väjningsplikt, stannande och parkering.
-_Fordonslag (2002:574)_ - Innehåller lagbestämmelser om kontroll av fordon, typgodkännande, besiktningar och flygande inspektioner.
-_Körkortslag (1998:488)_ - Fastställer de grundläggande lagkraven för behörighet att köra motordrivna fordon, medicinska krav och regler för körkortsingripande.
-_Fordonsförordning (2009:211)_ - Preciserar reglerna kring fordons beskaffenhet, utrustning och de tekniska kraven för att ett fordon ska få användas i trafik.
-_Lag (1951:649) om straff för vissa trafikbrott_ - Definierar brottsliga handlingar i trafiken såsom vårdslöshet, rattfylleri, olovlig körning och smitning samt deras påföljder.
-_Vägmärken i Sverige (Wikipedia)_ - Ger en historisk kontext och beskrivningar av utformningen och kategoriseringen av svenska trafikskyltar.
-_Transportstyrelsens föreskrifter om kursplan, behörighet B (TSFS 2011:20)_ - Anger målen för förarutbildningen och de kunskaper som krävs för att få körkort för personbil.
 
 **Zustand med `persist`-middleware** - Kortprogress sparas i `localStorage` automatiskt via Zustand. Kön (ordningen på korten) persisteras däremot inte, den byggs om och slumpas om vid varje sidladdning för att ge variation och hindra memorisering av kortordning.
 
@@ -204,21 +194,30 @@ _Transportstyrelsens föreskrifter om kursplan, behörighet B (TSFS 2011:20)_ - 
 
 **Hamburgermeny valdes bort** - Med så få vyer bedömdes en hamburgermeny som onödig komplexitet för det aktuella scopet.
 
-**Darkmode som systeminställning** - Istället för en manuell toggle följer appen användarens systeminställning via `prefers-color-scheme`. En toggle kan tillkomma i en framtida version.
+**Darkmode som systeminställning** - Istället för en manuell toggle följer appen användarens systeminställning via `prefers-color-scheme`. En toggle kan tillkomma i en framtida version.  
+
+### Källor som användes till NotebookLM:
+**_Körkortsförordning (1998:980)_** - Innehåller detaljerade föreskrifter om förarbehörighet, utfärdande och giltighet av körkort samt regler för övningskörning och handledarskap.  
+**_Vägmärkesförordning (2007:90)_** - Reglerar alla typer av vägmärken, trafiksignaler, vägmarkeringar och andra anordningar för anvisningar i trafiken.  
+**_Trafikförordning (1998:1276)_** - Den centrala förordningen som innehåller trafikregler för alla trafikanter, bestämmelser om hastighet, väjningsplikt, stannande och parkering.  
+**_Fordonslag (2002:574)_**- Innehåller lagbestämmelser om kontroll av fordon, typgodkännande, besiktningar och flygande inspektioner.  
+**_Körkortslag (1998:488)_** - Fastställer de grundläggande lagkraven för behörighet att köra motordrivna fordon, medicinska krav och regler för körkortsingripande.  
+**_Fordonsförordning (2009:211)_** - Preciserar reglerna kring fordons beskaffenhet, utrustning och de tekniska kraven för att ett fordon ska få användas i trafik.  
+**_Lag (1951:649) om straff för vissa trafikbrott_** - Definierar brottsliga handlingar i trafiken såsom vårdslöshet, rattfylleri, olovlig körning och smitning samt deras påföljder.  
+**_Vägmärken i Sverige (Wikipedia)_** - Ger en historisk kontext och beskrivningar av utformningen och kategoriseringen av svenska trafikskyltar.  
+**_Transportstyrelsens föreskrifter om kursplan, behörighet B (TSFS 2011:20)_** - Anger målen för förarutbildningen och de kunskaper som krävs för att få körkort för personbil.
 
 ---
 
 ## 🗺 Utrymme för fortsatt utveckling
 
-Projektet planerades iterativt med en tydlig MVP som prioritet. Vi ville säkra att grundfunktionaliteten var solid och kurskraven uppfyllda innan vi gick vidare. Utöver det som levererades fanns fler steg inplanerade i mån av tid, och en önskelista för framtida versioner.
-
-### Nästa steg (planerat men hann inte med)
-- **Alt-texter** - Bilder saknar ännu korrekta alt-texter för tillgänglighet
-- **Loading-indikator** - En animerad laddningsindikator (bar eller bollar) istället för text
-- **Senaste kort** - Ta tillbaka det senaste kortet man skickat till en hög
+Projektet planerades iterativt med en tydlig MVP som prioritet. Vi ville säkra att grundfunktionaliteten var solid och kurskraven uppfyllda innan vi gick vidare. Utöver det som levererades fanns fler steg inplanerade i mån av tid som önskelista för framtida versioner.
 
 ### Önskelista
-- **Blandade Lekar** - Val att blanda flera kategorier och möjlig extra kategori för inloggade användare á "Mina svåraste kort"
+- **Alt-texter** - Bilder saknar ännu korrekta alt-texter. Inte lika viktiga för tillgänglighet när blinda sällan tar körkort men fortfarande av vikt om någon bild saknas.
+- **Loading-indikator** - En animerad laddningsindikator (bar eller bollar) istället för text
+- **Senaste kort** - Ta tillbaka det senaste kortet man skickat till en hög.  
+- **Blandade lekar** - Val att blanda flera kategorier och möjlig extra kategori för inloggade användare á "Mina svåraste kort"
 - **Kategori färger** - Darkmode och lightmode färger för varje kategori, Supabase är förberedd för dessa. 
 - **Grafiklager** - Ett Grafik lager med z-index mellan kort och innehåll som blandas mot "kortet under" och ger vattenstämpel effekt som passar valda färger.
 - **Spara framsteg i Supabase** - Kortstatus (active/done) med tidstämpel sparas både i `localStorage` och i Supabase, så att framsteg synkas mellan enheter och sessioner
