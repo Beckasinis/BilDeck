@@ -59,7 +59,7 @@ Projektet är byggt av ett tvåpersonersteam som skoluppgift i kursen JavaScript
 
 | Verktyg | Användning |
 |---|---|
-| [React 19](https://react.dev/) | UI-ramverk |
+| [React](https://react.dev/) | UI-bibliotek |
 | [Vite](https://vitejs.dev/) | Byggverktyg och dev-server |
 | [React Router](https://reactrouter.com/) | Klientsidig routing med URL-parametrar |
 | [Zustand](https://zustand-demo.pmnd.rs/) | Global state — session, kategorier och kortprogress |
