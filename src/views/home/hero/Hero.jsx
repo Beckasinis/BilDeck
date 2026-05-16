@@ -1,3 +1,4 @@
+import { Link } from 'react-router';
 import './hero.css';
 import useSessionStore from '../../../stores/useSessionStore';
 import { Button } from '../../../components';
@@ -50,7 +51,9 @@ function Hero() {
           Flashcards med active recall — allt du behöver för att ta körkort på kortast möjliga tid.
         </p>
         <div className="hero-actions">
-          <Button variant="primary">Hur fungerar det?</Button>
+          <Link to="/signup">
+            <Button variant="primary">Skapa konto!</Button>
+          </Link> 
         </div>
       </div>
     </section>
